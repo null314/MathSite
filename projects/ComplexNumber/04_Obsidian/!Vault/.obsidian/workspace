@@ -1,0 +1,99 @@
+{
+  "main": {
+    "id": "2f6b37b3087ea86c",
+    "type": "split",
+    "children": [
+      {
+        "id": "08ff02a489f7361a",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Определение.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ff8728a8d121dfa2",
+    "type": "split",
+    "children": [
+      {
+        "id": "e15a184e6860d98e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ce6751bd360d4e7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b44f31c96ec0ef42",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a05726fc125a876a",
+    "type": "split",
+    "children": [
+      {
+        "id": "605098239ea6726c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "355307037c96c1f7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Определение.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Определение.md",
+    "Untitled.md",
+    "Экспонента (комп).md",
+    "Экспонента (действительные числа).md",
+    "Сопряжение.md",
+    "Умножение. На нуль.md",
+    "Умножение. На единицу.md",
+    "Умножение.md",
+    "Сложение.md"
+  ]
+}
