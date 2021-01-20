@@ -1,5 +1,6 @@
 [
 	"!Code/Complex.ts",
+	"!Code/XImage.ts",
 	"!Code/Context2d.ts",
 	"!Code/Canvas.ts",
 	"!Code/DragResult.ts",

@@ -101,4 +101,34 @@ class Context2d
 	{
 		this.Context.translate(Pos.X, Pos.Y);	
 	}
+	
+	
+	SetColor(color: string): void
+	{
+		this.Context.strokeStyle  = color;		
+	}
+
+	GetColor(): string
+	{
+		return this.Context.strokeStyle as string;
+	}
+
+
+	DrawImageNatural(image: XImage, pos: Vector2): void
+	{
+		this.Context.drawImage(image.Image, 0, 0, image.Image.naturalWidth, image.Image.naturalHeight, pos.X, pos.Y, image.Image.naturalWidth, image.Image.naturalHeight);
+//		this.Context.drawImage(image.Image, 0, 0, image.Image.naturalWidth, image.Image.naturalWidth, pos.X, pos.Y, image.Image.naturalWidth, image.Image.naturalWidth);
+	}
+	
+	
+	SetFont(size:number, font: string): void
+	{
+		this.Context.font = size.toLocaleString() + "px " + font;		
+	}
+	
+	DrawText(text: string, pos: Vector2): void
+	{
+		this.Context.textBaseline = "top";
+		this.Context.fillText(text, pos.X, pos.Y);		
+	}
 }

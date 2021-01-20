@@ -40,4 +40,10 @@ class Complex
 	{
 		return new Complex(this.Re, -this.Im);
 	}
+	
+	Norm(): Complex
+	{
+		var magnitude = this.Magnitude();
+		return new Complex(this.Re / magnitude, this.Im / magnitude);	
+	}
 }

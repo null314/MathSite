@@ -198,7 +198,7 @@ namespace ObsidianConverter
 							listStarted = true;
 						}
 
-						fw.WriteLine("\t<li>" + l + "</li>");
+						fw.WriteLine("\t<li>" + ReplaceLink(l, dict, subpath) + "</li>");
 
 
 					}))

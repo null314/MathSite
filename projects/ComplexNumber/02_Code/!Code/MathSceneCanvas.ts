@@ -15,31 +15,39 @@ class MathSceneCanvas extends Canvas
 	}
 
 
-	AddSingle(complex: Complex, maxRe: number, pos: Vector2, size: Vector2): SingleMathObject
+	AddSingle(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2): SingleMathObject
 	{
-		var mo = new SingleMathObject(complex, maxRe, pos, size, this.Context);
+		var mo = new SingleMathObject(complex, color, singleMathObjectType, maxRe, pos, size, this);
 		this.MathObjectList.push(mo);
 		return mo;
 	}
 	
-	AddSum(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddSum(arg1: SingleMathObject, arg2: SingleMathObject, color: string, sumMathObjectType: SumMathObjectType, upShift: boolean, maxRe: number, pos: Vector2, size: Vector2): SumMathObject
 	{
-		this.MathObjectList.push(new SumMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+		var s = new SumMathObject(arg1, arg2, color, sumMathObjectType, upShift, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
-	AddConjugate(arg: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddConjugate(arg: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2): ConjugateMathObject
 	{
-		this.MathObjectList.push(new ConjugateMathObject(arg, maxRe, pos, size, this.Context));
+		var s = new ConjugateMathObject(arg, color, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
-	AddMult(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddMult(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2): MultMathObject
 	{
-		this.MathObjectList.push(new MultMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+		var s = new MultMathObject(arg1, arg2, color, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
-	AddDiv(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddDiv(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2): DivMathObject
 	{
-		this.MathObjectList.push(new DivMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+		var s = new DivMathObject(arg1, arg2, color, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
 	

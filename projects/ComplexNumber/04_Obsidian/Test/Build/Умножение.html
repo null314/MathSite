@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>title</title>
+</head>
+<body>
+<script type='text/Javascript' src='Code/source.js'></script>
+
+<H1>Формула</H1>
+<p>$$ (a + i \cdot b)(c + i \cdot d) = (a \cdot c - b \cdot d) + i (a \cdot c + b \cdot d)$$</p>
+<H1>Картинка</H1>
+<canvas id='canvas1' width='1000' height='400'></canvas>
+
+<script type='text/Javascript'>
+var scene = new MathSceneCanvas("canvas1");
+var a1 = scene.AddSingle(new Complex(1, 1), 2, new Vector2(100, 100), new Vector2(200, 200));
+var a2 = scene.AddSingle(new Complex(1, -1), 2, new Vector2(400, 100), new Vector2(200, 200));
+scene.AddMult(a1, a2, 2, new Vector2(700, 100), new Vector2(200, 200));
+scene.Repaint();
+
+</script>
+<H1>Свойства и примеры</H1>
+<ul>
+	<li><a href='Свойство. Умножение на нуль.html'>Свойство. Умножение на нуль</a></li>
+	<li><a href='Свойство. Умножение на единицу.html'>Свойство. Умножение на единицу</a></li>
+	<li><a href='Свойство. Сопряжение умножения.html'>Свойство. Сопряжение умножения</a></li>
+	<li><a href='Пример. Умножение двух действительных чисел.html'>Пример. Умножение двух действительных чисел</a></li>
+	<li><a href='Пример. Умножение на число единичной длины.html'>Пример. Умножение на число единичной длины</a></li>
+	<li><a href='Пример. Умножение на мнимую единицу.html'>Пример. Умножение на мнимую единицу</a></li>
+	<li><a href='Пример. Умножение двух мнимых единиц.html'>Пример. Умножение двух мнимых единиц</a></li>
+	<li><a href='Пример. Умножение отрицательного действительного числа на положительное.html'>Пример. Умножение отрицательного действительного числа на положительное</a></li>
+	<li><a href='Пример. Умножение двух отрицательных действительных чисел.html'>Пример. Умножение двух отрицательных действительных чисел</a></li>
+</body>
+</html>

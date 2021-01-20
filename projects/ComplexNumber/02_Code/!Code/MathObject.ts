@@ -8,13 +8,15 @@ abstract class MathObject
 	Size: Vector2;
 	CenterShift: Vector2;
 	CenterPos: Vector2;
+	MathSceneCanvas: MathSceneCanvas;
 	Context: Context2d;
 	InnerTopLeftConner: Vector2;
 	InnerBottomRightConner: Vector2;
 	
-	constructor(pos: Vector2, size: Vector2, centerShift: Vector2, context: Context2d)
+	constructor(pos: Vector2, size: Vector2, centerShift: Vector2, mathSceneCanvas: MathSceneCanvas)
 	{
-		this.Context = context;
+		this.MathSceneCanvas = mathSceneCanvas;
+		this.Context = mathSceneCanvas.Context;
 		this.Pos = pos;
 		this.Size = size;	
 		this.BottomConnerPos = pos.Plus(size);

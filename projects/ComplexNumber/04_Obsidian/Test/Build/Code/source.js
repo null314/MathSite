@@ -36,7 +36,25 @@ var Complex = /** @class */ (function () {
     Complex.prototype.Conjugate = function () {
         return new Complex(this.Re, -this.Im);
     };
+    Complex.prototype.Norm = function () {
+        var magnitude = this.Magnitude();
+        return new Complex(this.Re / magnitude, this.Im / magnitude);
+    };
     return Complex;
+}());
+// !Code/XImage.ts
+var XImage = /** @class */ (function () {
+    function XImage(src, onLoad) {
+        var thisObj = this;
+        this.OnLoad = onLoad;
+        this.Image = new Image(50, 50);
+        this.Image.onload = function () {
+            thisObj.IsLoaded = true;
+            thisObj.OnLoad();
+        };
+        this.Image.src = src;
+    }
+    return XImage;
 }());
 // !Code/Context2d.ts
 var Context2d = /** @class */ (function () {
@@ -106,6 +124,23 @@ var Context2d = /** @class */ (function () {
     Context2d.prototype.Translate = function (Pos) {
         this.Context.translate(Pos.X, Pos.Y);
     };
+    Context2d.prototype.SetColor = function (color) {
+        this.Context.strokeStyle = color;
+    };
+    Context2d.prototype.GetColor = function () {
+        return this.Context.strokeStyle;
+    };
+    Context2d.prototype.DrawImageNatural = function (image, pos) {
+        this.Context.drawImage(image.Image, 0, 0, image.Image.naturalWidth, image.Image.naturalHeight, pos.X, pos.Y, image.Image.naturalWidth, image.Image.naturalHeight);
+        //		this.Context.drawImage(image.Image, 0, 0, image.Image.naturalWidth, image.Image.naturalWidth, pos.X, pos.Y, image.Image.naturalWidth, image.Image.naturalWidth);
+    };
+    Context2d.prototype.SetFont = function (size, font) {
+        this.Context.font = size.toLocaleString() + "px " + font;
+    };
+    Context2d.prototype.DrawText = function (text, pos) {
+        this.Context.textBaseline = "top";
+        this.Context.fillText(text, pos.X, pos.Y);
+    };
     return Context2d;
 }());
 // !Code/Canvas.ts
@@ -143,8 +178,9 @@ var DragResult;
 })(DragResult || (DragResult = {}));
 // !Code/MathObject.ts
 var MathObject = /** @class */ (function () {
-    function MathObject(pos, size, centerShift, context) {
-        this.Context = context;
+    function MathObject(pos, size, centerShift, mathSceneCanvas) {
+        this.MathSceneCanvas = mathSceneCanvas;
+        this.Context = mathSceneCanvas.Context;
         this.Pos = pos;
         this.Size = size;
         this.BottomConnerPos = pos.Plus(size);
@@ -180,54 +216,118 @@ var ComplexMathObject = /** @class */ (function (_super) {
         this.Context.Arrow(new Vector2(start.Re * this.ReToX, start.Im * this.ImToY), new Vector2(end.Re * this.ReToX, end.Im * this.ImToY), 10, 2);
     };
     ComplexMathObject.prototype.PaintPlain = function () {
+        this.Context.SetColor("#AAAAAA");
+        if (this.Image != null && this.Image.IsLoaded)
+            this.Context.DrawImageNatural(this.Image, this.InnerTopLeftConner.Plus(new Vector2(10, 10)));
+        if (this.Text != null) {
+            this.Context.SetFont(20, "serif");
+            this.Context.DrawText(this.Text, this.InnerTopLeftConner.Plus(new Vector2(10, 10)));
+        }
         this.Context.Arrow(new Vector2(this.InnerTopLeftConner.X, 0), new Vector2(this.InnerBottomRightConner.X, 0), 10, 5);
         this.Context.Arrow(new Vector2(0, this.InnerBottomRightConner.Y), new Vector2(0, this.InnerTopLeftConner.Y), 10, 5);
         this.Context.Circle(new Vector2(0, 0), this.ReToX);
     };
+    ComplexMathObject.prototype.SetText = function (text) {
+        this.Text = text;
+        this.MathSceneCanvas.Repaint();
+    };
+    ComplexMathObject.prototype.SetImage = function (src) {
+        var thisObj = this;
+        this.Image = new XImage(src, function () {
+            thisObj.MathSceneCanvas.Repaint();
+        });
+    };
     return ComplexMathObject;
 }(MathObject));
 // !Code/SingleMathObject.ts
+var SingleMathObjectType;
+(function (SingleMathObjectType) {
+    SingleMathObjectType[SingleMathObjectType["Simple"] = 0] = "Simple";
+    SingleMathObjectType[SingleMathObjectType["Real"] = 1] = "Real";
+    SingleMathObjectType[SingleMathObjectType["One"] = 2] = "One";
+})(SingleMathObjectType || (SingleMathObjectType = {}));
 var SingleMathObject = /** @class */ (function (_super) {
     __extends(SingleMathObject, _super);
-    function SingleMathObject(complex, maxRe, pos, size, context) {
+    function SingleMathObject(complex, color, singleMathObjectType, maxRe, pos, size, context) {
         var _this = _super.call(this, maxRe, pos, size, context) || this;
         _this.Complex = complex;
+        _this.Color = color;
+        _this.SingleMathObjectType = singleMathObjectType;
         return _this;
     }
+    SingleMathObject.prototype.GetValue = function () {
+        return this.Complex;
+    };
     SingleMathObject.prototype.PaintVirt = function () {
+        var oldColor = this.Context.GetColor();
         this.PaintPlain();
+        this.Context.SetColor(this.Color);
         this.DrawArrow(new Complex(0, 0), this.Complex);
+        this.Context.SetColor(oldColor);
     };
     SingleMathObject.prototype.OnMouseDownVirt = function (event, pos) {
-        this.Complex.Re = pos.X / this.ReToX;
-        this.Complex.Im = pos.Y / this.ImToY;
+        this.SetValue(pos);
         return DragResult.Drag;
     };
     SingleMathObject.prototype.OnMouseMoveVirt = function (event, pos) {
+        this.SetValue(pos);
+    };
+    SingleMathObject.prototype.SetValue = function (pos) {
         this.Complex.Re = pos.X / this.ReToX;
         this.Complex.Im = pos.Y / this.ImToY;
+        if (this.SingleMathObjectType == SingleMathObjectType.Real)
+            this.Complex.Im = 0;
+        if (this.SingleMathObjectType == SingleMathObjectType.One) {
+            this.Complex = this.Complex.Norm();
+        }
     };
     return SingleMathObject;
 }(ComplexMathObject));
 // !Code/SumMathObject.ts
+var SumMathObjectType;
+(function (SumMathObjectType) {
+    SumMathObjectType[SumMathObjectType["Front"] = 0] = "Front";
+    SumMathObjectType[SumMathObjectType["Back"] = 1] = "Back";
+    SumMathObjectType[SumMathObjectType["FrontAndBack"] = 2] = "FrontAndBack";
+})(SumMathObjectType || (SumMathObjectType = {}));
 var SumMathObject = /** @class */ (function (_super) {
     __extends(SumMathObject, _super);
-    function SumMathObject(arg1, arg2, maxRe, pos, size, context) {
+    function SumMathObject(arg1, arg2, color, sumMathObjectType, upShift, maxRe, pos, size, context) {
         var _this = _super.call(this, maxRe, pos, size, context) || this;
         _this.Arg1 = arg1;
         _this.Arg2 = arg2;
+        _this.SumMathObjectType = sumMathObjectType;
+        _this.UpShift = upShift;
+        _this.Color = color;
         return _this;
     }
+    SumMathObject.prototype.GetValue = function () {
+        return this.Sum;
+    };
     SumMathObject.prototype.PaintVirt = function () {
+        var oldColor = this.Context.GetColor();
         this.PaintPlain();
         var complex1 = this.Arg1.Complex;
         var complex2 = this.Arg2.Complex;
         this.Sum = complex1.Plus(complex2);
-        this.DrawArrow(new Complex(0, 0), complex1);
-        this.DrawArrow(new Complex(0, 0), complex2);
-        this.DrawArrow(complex1, this.Sum);
-        this.DrawArrow(complex2, this.Sum);
-        this.DrawArrow(new Complex(0, 0), this.Sum);
+        if (this.SumMathObjectType == SumMathObjectType.Front || this.SumMathObjectType == SumMathObjectType.FrontAndBack) {
+            this.Context.SetColor(this.Arg1.Color);
+            this.DrawArrow(new Complex(0, 0), complex1);
+            this.Context.SetColor(this.Arg2.Color);
+            this.DrawArrow(complex1, this.Sum);
+        }
+        if (this.SumMathObjectType == SumMathObjectType.Back || this.SumMathObjectType == SumMathObjectType.FrontAndBack) {
+            this.Context.SetColor(this.Arg2.Color);
+            this.DrawArrow(new Complex(0, 0), complex2);
+            this.Context.SetColor(this.Arg1.Color);
+            this.DrawArrow(complex2, this.Sum);
+        }
+        this.Context.SetColor(this.Color);
+        if (this.UpShift)
+            this.DrawArrow(new Complex(0, 0.05), this.Sum.Plus(new Complex(0, 0.05)));
+        else
+            this.DrawArrow(new Complex(0, 0), this.Sum);
+        this.Context.SetColor(oldColor);
     };
     SumMathObject.prototype.OnMouseDownVirt = function (event, pos) {
         return DragResult.NoDrag;
@@ -239,16 +339,23 @@ var SumMathObject = /** @class */ (function (_super) {
 // !Code/ConjugateMathObject.ts
 var ConjugateMathObject = /** @class */ (function (_super) {
     __extends(ConjugateMathObject, _super);
-    function ConjugateMathObject(arg, maxRe, pos, size, context) {
+    function ConjugateMathObject(arg, color, maxRe, pos, size, context) {
         var _this = _super.call(this, maxRe, pos, size, context) || this;
         _this.Arg = arg;
+        _this.Color = color;
         return _this;
     }
     ConjugateMathObject.prototype.PaintVirt = function () {
+        var oldColor = this.Context.GetColor();
         this.PaintPlain();
-        var complex = this.Arg.Complex;
+        var complex = this.Arg.GetValue();
         this.Conjugate = complex.Conjugate();
+        this.Context.SetColor(this.Color);
         this.DrawArrow(new Complex(0, 0), this.Conjugate);
+        this.Context.SetColor(oldColor);
+    };
+    ConjugateMathObject.prototype.GetValue = function () {
+        return this.Conjugate;
     };
     ConjugateMathObject.prototype.OnMouseDownVirt = function (event, pos) {
         return DragResult.NoDrag;
@@ -260,18 +367,25 @@ var ConjugateMathObject = /** @class */ (function (_super) {
 // !Code/MultMathObject.ts
 var MultMathObject = /** @class */ (function (_super) {
     __extends(MultMathObject, _super);
-    function MultMathObject(arg1, arg2, maxRe, pos, size, context) {
+    function MultMathObject(arg1, arg2, color, maxRe, pos, size, context) {
         var _this = _super.call(this, maxRe, pos, size, context) || this;
         _this.Arg1 = arg1;
         _this.Arg2 = arg2;
+        _this.Color = color;
         return _this;
     }
+    MultMathObject.prototype.GetValue = function () {
+        return this.Mult;
+    };
     MultMathObject.prototype.PaintVirt = function () {
+        var oldColor = this.Context.GetColor();
         this.PaintPlain();
         var complex1 = this.Arg1.Complex;
         var complex2 = this.Arg2.Complex;
         this.Mult = complex1.Mult(complex2);
+        this.Context.SetColor(this.Color);
         this.DrawArrow(new Complex(0, 0), this.Mult);
+        this.Context.SetColor(oldColor);
     };
     MultMathObject.prototype.OnMouseDownVirt = function (event, pos) {
         return DragResult.NoDrag;
@@ -283,18 +397,25 @@ var MultMathObject = /** @class */ (function (_super) {
 // !Code/DivMathObject.ts
 var DivMathObject = /** @class */ (function (_super) {
     __extends(DivMathObject, _super);
-    function DivMathObject(arg1, arg2, maxRe, pos, size, context) {
+    function DivMathObject(arg1, arg2, color, maxRe, pos, size, context) {
         var _this = _super.call(this, maxRe, pos, size, context) || this;
         _this.Arg1 = arg1;
         _this.Arg2 = arg2;
+        _this.Color = color;
         return _this;
     }
+    DivMathObject.prototype.GetValue = function () {
+        return this.Div;
+    };
     DivMathObject.prototype.PaintVirt = function () {
+        var oldColor = this.Context.GetColor();
         this.PaintPlain();
         var complex1 = this.Arg1.Complex;
         var complex2 = this.Arg2.Complex;
         this.Div = complex1.Div(complex2);
+        this.Context.SetColor(this.Color);
         this.DrawArrow(new Complex(0, 0), this.Div);
+        this.Context.SetColor(oldColor);
     };
     DivMathObject.prototype.OnMouseDownVirt = function (event, pos) {
         return DragResult.NoDrag;
@@ -311,22 +432,30 @@ var MathSceneCanvas = /** @class */ (function (_super) {
         _this.MathObjectList = new Array();
         return _this;
     }
-    MathSceneCanvas.prototype.AddSingle = function (complex, maxRe, pos, size) {
-        var mo = new SingleMathObject(complex, maxRe, pos, size, this.Context);
+    MathSceneCanvas.prototype.AddSingle = function (complex, color, singleMathObjectType, maxRe, pos, size) {
+        var mo = new SingleMathObject(complex, color, singleMathObjectType, maxRe, pos, size, this);
         this.MathObjectList.push(mo);
         return mo;
     };
-    MathSceneCanvas.prototype.AddSum = function (arg1, arg2, maxRe, pos, size) {
-        this.MathObjectList.push(new SumMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+    MathSceneCanvas.prototype.AddSum = function (arg1, arg2, color, sumMathObjectType, upShift, maxRe, pos, size) {
+        var s = new SumMathObject(arg1, arg2, color, sumMathObjectType, upShift, maxRe, pos, size, this);
+        this.MathObjectList.push(s);
+        return s;
     };
-    MathSceneCanvas.prototype.AddConjugate = function (arg, maxRe, pos, size) {
-        this.MathObjectList.push(new ConjugateMathObject(arg, maxRe, pos, size, this.Context));
+    MathSceneCanvas.prototype.AddConjugate = function (arg, color, maxRe, pos, size) {
+        var s = new ConjugateMathObject(arg, color, maxRe, pos, size, this);
+        this.MathObjectList.push(s);
+        return s;
     };
-    MathSceneCanvas.prototype.AddMult = function (arg1, arg2, maxRe, pos, size) {
-        this.MathObjectList.push(new MultMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+    MathSceneCanvas.prototype.AddMult = function (arg1, arg2, color, maxRe, pos, size) {
+        var s = new MultMathObject(arg1, arg2, color, maxRe, pos, size, this);
+        this.MathObjectList.push(s);
+        return s;
     };
-    MathSceneCanvas.prototype.AddDiv = function (arg1, arg2, maxRe, pos, size) {
-        this.MathObjectList.push(new DivMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+    MathSceneCanvas.prototype.AddDiv = function (arg1, arg2, color, maxRe, pos, size) {
+        var s = new DivMathObject(arg1, arg2, color, maxRe, pos, size, this);
+        this.MathObjectList.push(s);
+        return s;
     };
     MathSceneCanvas.prototype.OnMouseDownVirt = function (event, pos) {
         var needRepaint = false;

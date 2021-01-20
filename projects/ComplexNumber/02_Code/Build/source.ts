@@ -43,7 +43,42 @@ class Complex
 	{
 		return new Complex(this.Re, -this.Im);
 	}
+	
+	Norm(): Complex
+	{
+		var magnitude = this.Magnitude();
+		return new Complex(this.Re / magnitude, this.Im / magnitude);	
+	}
 }
+
+// !Code/XImage.ts
+
+
+
+
+
+class XImage
+{
+	Image: HTMLImageElement;
+	IsLoaded: boolean;
+	OnLoad: () => void
+	
+	
+	constructor(src: string, onLoad: () => void)
+	{
+		var thisObj = this;
+		this.OnLoad = onLoad;
+		this.Image = new Image(50, 50);
+		this.Image.onload = function() 
+		{ 
+			thisObj.IsLoaded = true;
+			thisObj.OnLoad();
+		}; 
+		this.Image.src = src;	
+	}
+}
+
+
 
 // !Code/Context2d.ts
 
@@ -149,6 +184,36 @@ class Context2d
 	{
 		this.Context.translate(Pos.X, Pos.Y);	
 	}
+	
+	
+	SetColor(color: string): void
+	{
+		this.Context.strokeStyle  = color;		
+	}
+
+	GetColor(): string
+	{
+		return this.Context.strokeStyle as string;
+	}
+
+
+	DrawImageNatural(image: XImage, pos: Vector2): void
+	{
+		this.Context.drawImage(image.Image, 0, 0, image.Image.naturalWidth, image.Image.naturalHeight, pos.X, pos.Y, image.Image.naturalWidth, image.Image.naturalHeight);
+//		this.Context.drawImage(image.Image, 0, 0, image.Image.naturalWidth, image.Image.naturalWidth, pos.X, pos.Y, image.Image.naturalWidth, image.Image.naturalWidth);
+	}
+	
+	
+	SetFont(size:number, font: string): void
+	{
+		this.Context.font = size.toLocaleString() + "px " + font;		
+	}
+	
+	DrawText(text: string, pos: Vector2): void
+	{
+		this.Context.textBaseline = "top";
+		this.Context.fillText(text, pos.X, pos.Y);		
+	}
 }
 
 
@@ -220,13 +285,15 @@ abstract class MathObject
 	Size: Vector2;
 	CenterShift: Vector2;
 	CenterPos: Vector2;
+	MathSceneCanvas: MathSceneCanvas;
 	Context: Context2d;
 	InnerTopLeftConner: Vector2;
 	InnerBottomRightConner: Vector2;
 	
-	constructor(pos: Vector2, size: Vector2, centerShift: Vector2, context: Context2d)
+	constructor(pos: Vector2, size: Vector2, centerShift: Vector2, mathSceneCanvas: MathSceneCanvas)
 	{
-		this.Context = context;
+		this.MathSceneCanvas = mathSceneCanvas;
+		this.Context = mathSceneCanvas.Context;
 		this.Pos = pos;
 		this.Size = size;	
 		this.BottomConnerPos = pos.Plus(size);
@@ -268,14 +335,18 @@ abstract class ComplexMathObject extends MathObject
 	MaxRe: number;
 	ReToX: number;
 	ImToY: number;
+	Image: XImage;
+	Text: string;
 	
-	constructor(maxRe: number, pos: Vector2, size: Vector2, context: Context2d)
+	constructor(maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
 	{
 		super(pos, size, size.Div(2), context);
 		this.MaxRe= maxRe;
 		this.ReToX = size.X / (2 * this.MaxRe);
 		this.ImToY = -this.ReToX;
 	}	
+
+	abstract GetValue(): Complex;
 
 	DrawArrow(start: Complex, end: Complex): void
 	{
@@ -286,11 +357,37 @@ abstract class ComplexMathObject extends MathObject
 	
 	PaintPlain(): void
 	{
+		this.Context.SetColor("#AAAAAA");
+		
+		if(this.Image != null && this.Image.IsLoaded)
+			this.Context.DrawImageNatural(this.Image, this.InnerTopLeftConner.Plus(new Vector2(10, 10)));
+
+		if(this.Text != null)
+		{
+			this.Context.SetFont(20, "serif");
+			this.Context.DrawText(this.Text, this.InnerTopLeftConner.Plus(new Vector2(10, 10)));
+		}
+
 		this.Context.Arrow(new Vector2(this.InnerTopLeftConner.X, 0), new Vector2(this.InnerBottomRightConner.X, 0), 10, 5);
 		this.Context.Arrow(new Vector2(0, this.InnerBottomRightConner.Y), new Vector2(0, this.InnerTopLeftConner.Y), 10, 5);	
 		this.Context.Circle(new Vector2(0, 0), this.ReToX);		
 	}
 
+	SetText(text: string)
+	{
+		this.Text = text;
+		this.MathSceneCanvas.Repaint();			
+	}
+	
+	SetImage(src: string)
+	{
+		var thisObj = this;
+
+		this.Image = new XImage(src, function() 
+		{
+			thisObj.MathSceneCanvas.Repaint();			
+		});
+	}
 }
 
 
@@ -298,64 +395,140 @@ abstract class ComplexMathObject extends MathObject
 
 
 // !Code/SingleMathObject.ts
+
+
+enum SingleMathObjectType
+{
+	Simple,
+	Real,
+	One,	
+}
+
+
 class SingleMathObject extends ComplexMathObject
 {
 	Complex: Complex;
+	Color: string;
+	SingleMathObjectType: SingleMathObjectType;
 	
-	constructor(complex: Complex, maxRe: number, pos: Vector2, size: Vector2, context: Context2d)
+	constructor(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
 	{
 		super(maxRe, pos, size, context);
 		this.Complex = complex;
+		this.Color = color;
+		this.SingleMathObjectType = singleMathObjectType;
 	}	
+
+	GetValue(): Complex
+	{
+		return this.Complex;	
+	}
 
 	PaintVirt(): void
 	{
+		var oldColor = this.Context.GetColor();
+
 		this.PaintPlain();
+		this.Context.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Complex);	
+		this.Context.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult
 	{
-		this.Complex.Re = pos.X / this.ReToX;
-		this.Complex.Im = pos.Y / this.ImToY;	
+		this.SetValue(pos);
 		return DragResult.Drag;
 	}
 
 	OnMouseMoveVirt(event: MouseEvent, pos: Vector2): void
 	{
+		this.SetValue(pos);
+	}
+	
+	SetValue(pos: Vector2): void
+	{
 		this.Complex.Re = pos.X / this.ReToX;
 		this.Complex.Im = pos.Y / this.ImToY;	
+		
+		if(this.SingleMathObjectType == SingleMathObjectType.Real)
+			this.Complex.Im = 0;
+		
+		if(this.SingleMathObjectType == SingleMathObjectType.One)
+		{
+			this.Complex = this.Complex.Norm();
+		}
 	}
 }
 
 
 // !Code/SumMathObject.ts
+
+
+enum SumMathObjectType
+{
+	Front,
+	Back, 
+	FrontAndBack	
+}
+
+
 class SumMathObject extends ComplexMathObject
 {
 	Arg1: SingleMathObject;
 	Arg2: SingleMathObject;
+	SumMathObjectType: SumMathObjectType;
 	Sum: Complex;
+	UpShift: boolean;
+	Color: string;
 	
-	constructor(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2, context: Context2d)
+	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, sumMathObjectType: SumMathObjectType, upShift: boolean, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
 	{
 		super(maxRe, pos, size, context);
 		this.Arg1 = arg1;
 		this.Arg2 = arg2;
+		this.SumMathObjectType = sumMathObjectType;
+		this.UpShift = upShift;
+		this.Color = color;
 	}	
+
+	GetValue(): Complex
+	{
+		return this.Sum;	
+	}
 
 	PaintVirt(): void
 	{
+		var oldColor = this.Context.GetColor();
+
 		this.PaintPlain();
 		
 		var complex1 = this.Arg1.Complex;
 		var complex2 = this.Arg2.Complex;
 		this.Sum = complex1.Plus(complex2);
 		
-		this.DrawArrow(new Complex(0, 0), complex1);	
-		this.DrawArrow(new Complex(0, 0), complex2);	
-		this.DrawArrow(complex1, this.Sum);
-		this.DrawArrow(complex2, this.Sum);	
-		this.DrawArrow(new Complex(0, 0), this.Sum);
+		if(this.SumMathObjectType == SumMathObjectType.Front || this.SumMathObjectType == SumMathObjectType.FrontAndBack)
+		{		
+			this.Context.SetColor(this.Arg1.Color);
+			this.DrawArrow(new Complex(0, 0), complex1);	
+			this.Context.SetColor(this.Arg2.Color);
+			this.DrawArrow(complex1, this.Sum);
+		}
+
+		if(this.SumMathObjectType == SumMathObjectType.Back || this.SumMathObjectType == SumMathObjectType.FrontAndBack)
+		{
+			this.Context.SetColor(this.Arg2.Color);
+			this.DrawArrow(new Complex(0, 0), complex2);	
+			this.Context.SetColor(this.Arg1.Color);
+			this.DrawArrow(complex2, this.Sum);	
+		}
+		
+		this.Context.SetColor(this.Color);
+		if(this.UpShift)
+			this.DrawArrow(new Complex(0, 0.05), this.Sum.Plus(new Complex(0, 0.05)));
+		else
+			this.DrawArrow(new Complex(0, 0), this.Sum);
+
+		this.Context.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult
@@ -375,24 +548,35 @@ class SumMathObject extends ComplexMathObject
 // !Code/ConjugateMathObject.ts
 class ConjugateMathObject extends ComplexMathObject
 {
-	Arg: SingleMathObject;
+	Arg: ComplexMathObject;
 	Conjugate: Complex;
+	Color: string;
 	
-	constructor(arg: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2, context: Context2d)
+	constructor(arg: ComplexMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
 	{
 		super(maxRe, pos, size, context);
 		this.Arg = arg;
+		this.Color = color;
 	}	
 
 	PaintVirt(): void
 	{
+		var oldColor = this.Context.GetColor();
 		this.PaintPlain();
 		
-		var complex = this.Arg.Complex;
+		var complex = this.Arg.GetValue();
 		this.Conjugate = complex.Conjugate();
 		
+		this.Context.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Conjugate);
+		this.Context.SetColor(oldColor);
 	}
+
+	GetValue(): Complex
+	{
+		return this.Conjugate;	
+	}
+
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult
 	{
@@ -415,22 +599,32 @@ class MultMathObject extends ComplexMathObject
 	Arg1: SingleMathObject;
 	Arg2: SingleMathObject;
 	Mult: Complex;
+	Color: string;
 	
-	constructor(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2, context: Context2d)
+	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
 	{
 		super(maxRe, pos, size, context);
 		this.Arg1 = arg1;
 		this.Arg2 = arg2;
+		this.Color = color;
 	}	
+
+	GetValue(): Complex
+	{
+		return this.Mult;
+	}
 
 	PaintVirt(): void
 	{
+		var oldColor = this.Context.GetColor();
 		this.PaintPlain();
 		
 		var complex1 = this.Arg1.Complex;
 		var complex2 = this.Arg2.Complex;
 		this.Mult = complex1.Mult(complex2);	
+		this.Context.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Mult);	
+		this.Context.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult
@@ -454,22 +648,34 @@ class DivMathObject extends ComplexMathObject
 	Arg1: SingleMathObject;
 	Arg2: SingleMathObject;
 	Div: Complex;
+	Color: string;
 	
-	constructor(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2, context: Context2d)
+	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
 	{
 		super(maxRe, pos, size, context);
 		this.Arg1 = arg1;
 		this.Arg2 = arg2;
+		this.Color = color;
 	}	
+
+	GetValue(): Complex
+	{
+		return this.Div;	
+	}
 
 	PaintVirt(): void
 	{
+		var oldColor = this.Context.GetColor();
 		this.PaintPlain();
 		
 		var complex1 = this.Arg1.Complex;
 		var complex2 = this.Arg2.Complex;
 		this.Div = complex1.Div(complex2);	
+
+		this.Context.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Div);
+
+		this.Context.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult
@@ -504,31 +710,39 @@ class MathSceneCanvas extends Canvas
 	}
 
 
-	AddSingle(complex: Complex, maxRe: number, pos: Vector2, size: Vector2): SingleMathObject
+	AddSingle(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2): SingleMathObject
 	{
-		var mo = new SingleMathObject(complex, maxRe, pos, size, this.Context);
+		var mo = new SingleMathObject(complex, color, singleMathObjectType, maxRe, pos, size, this);
 		this.MathObjectList.push(mo);
 		return mo;
 	}
 	
-	AddSum(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddSum(arg1: SingleMathObject, arg2: SingleMathObject, color: string, sumMathObjectType: SumMathObjectType, upShift: boolean, maxRe: number, pos: Vector2, size: Vector2): SumMathObject
 	{
-		this.MathObjectList.push(new SumMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+		var s = new SumMathObject(arg1, arg2, color, sumMathObjectType, upShift, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
-	AddConjugate(arg: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddConjugate(arg: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2): ConjugateMathObject
 	{
-		this.MathObjectList.push(new ConjugateMathObject(arg, maxRe, pos, size, this.Context));
+		var s = new ConjugateMathObject(arg, color, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
-	AddMult(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddMult(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2): MultMathObject
 	{
-		this.MathObjectList.push(new MultMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+		var s = new MultMathObject(arg1, arg2, color, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
-	AddDiv(arg1: SingleMathObject, arg2: SingleMathObject, maxRe: number, pos: Vector2, size: Vector2): void
+	AddDiv(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2): DivMathObject
 	{
-		this.MathObjectList.push(new DivMathObject(arg1, arg2, maxRe, pos, size, this.Context));
+		var s = new DivMathObject(arg1, arg2, color, maxRe, pos, size, this);
+		this.MathObjectList.push(s);
+		return s;
 	}
 
 	
