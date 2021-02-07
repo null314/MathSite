@@ -1,0 +1,19 @@
+[
+	"../!Code/Complex.ts",
+	"../!Code/XImage.ts",
+	"../!Code/Context2d.ts",
+	"../!Code/Context3d.ts",
+	"../!Code/MathObject.ts",
+	"../!Code/TdMathObject.ts",
+	"../!Code/TestAxisTdMathObject.ts",
+	"../!Code/PlaneTdMathObject.ts",
+	"../!Code/ExpTdMathObject.ts",
+	"../!Code/Td.ts",
+	"../!Code/Canvas.ts",
+	"../!Code/DragResult.ts",
+	"../!Code/MathSceneCanvas.ts",
+	"../!Code/Vector2.ts",
+	"../!Code/Vector3.ts",
+	"../!Code/Matrix3.ts",
+	"Main.ts"	
+]

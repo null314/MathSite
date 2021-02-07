@@ -2,12 +2,12 @@
 abstract class Canvas
 {
 	Canvas: HTMLCanvasElement;
-	Context: Context2d;
+	Context2d: Context2d;
 
 	constructor(canvasId: string) 
 	{
 		this.Canvas = document.getElementById(canvasId) as HTMLCanvasElement;
-		this.Context = new Context2d(this.Canvas);
+		this.Context2d = new Context2d(this.Canvas);
 		
 		let thisClosure = this;
 		this.Canvas.addEventListener("mousedown", function (e: MouseEvent): void { thisClosure.OnMouseDown(e); }, false);

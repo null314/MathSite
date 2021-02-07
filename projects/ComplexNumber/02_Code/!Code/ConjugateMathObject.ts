@@ -4,24 +4,24 @@ class ConjugateMathObject extends ComplexMathObject
 	Conjugate: Complex;
 	Color: string;
 	
-	constructor(arg: ComplexMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
+	constructor(arg: ComplexMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2)
 	{
-		super(maxRe, pos, size, context);
+		super(maxRe, pos, size);
 		this.Arg = arg;
 		this.Color = color;
 	}	
 
 	PaintVirt(): void
 	{
-		var oldColor = this.Context.GetColor();
+		var oldColor = this.Context2d.GetColor();
 		this.PaintPlain();
 		
 		var complex = this.Arg.GetValue();
 		this.Conjugate = complex.Conjugate();
 		
-		this.Context.SetColor(this.Color);
+		this.Context2d.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Conjugate);
-		this.Context.SetColor(oldColor);
+		this.Context2d.SetColor(oldColor);
 	}
 
 	GetValue(): Complex

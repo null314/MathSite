@@ -1,6 +1,5 @@
 
 
-
 abstract class MathObject
 {
 	Pos: Vector2;
@@ -9,14 +8,12 @@ abstract class MathObject
 	CenterShift: Vector2;
 	CenterPos: Vector2;
 	MathSceneCanvas: MathSceneCanvas;
-	Context: Context2d;
+	Context2d: Context2d;
 	InnerTopLeftConner: Vector2;
 	InnerBottomRightConner: Vector2;
 	
-	constructor(pos: Vector2, size: Vector2, centerShift: Vector2, mathSceneCanvas: MathSceneCanvas)
+	constructor(pos: Vector2, size: Vector2, centerShift: Vector2)
 	{
-		this.MathSceneCanvas = mathSceneCanvas;
-		this.Context = mathSceneCanvas.Context;
 		this.Pos = pos;
 		this.Size = size;	
 		this.BottomConnerPos = pos.Plus(size);
@@ -25,21 +22,23 @@ abstract class MathObject
 		this.InnerTopLeftConner = centerShift.Mult(-1);
 		this.InnerBottomRightConner = size.Minus(centerShift);
 	}
+
+	abstract SetParent(mathSceneCanvas: MathSceneCanvas): void;
 	
 	IsInto(pos: Vector2): boolean
 	{
 		var r = 
 			pos.X >= this.Pos.X && pos.X <= this.BottomConnerPos.X &&
-			pos.Y >= this.Pos.Y && pos.Y <= this.Pos.Y + this.Size.Y;
+			pos.Y >= this.Pos.Y && pos.Y <= this.BottomConnerPos.Y;
 		return r;
 	}
 	
 	Paint(): void
 	{
-		this.Context.StrokeRect(this.Pos, this.Size);	
-		this.Context.Translate(this.CenterPos);
+		this.Context2d.StrokeRect(this.Pos, this.Size);	
+		this.Context2d.Translate(this.CenterPos);
 		this.PaintVirt();	
-		this.Context.Translate(this.CenterPos.Inverse());
+		this.Context2d.Translate(this.CenterPos.Inverse());
 	}
 	
 	abstract PaintVirt(): void;
@@ -47,3 +46,5 @@ abstract class MathObject
 	abstract OnMouseMoveVirt(event: MouseEvent, pos: Vector2) : void;
 	
 }
+
+

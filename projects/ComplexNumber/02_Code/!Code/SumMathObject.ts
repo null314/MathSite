@@ -17,9 +17,9 @@ class SumMathObject extends ComplexMathObject
 	UpShift: boolean;
 	Color: string;
 	
-	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, sumMathObjectType: SumMathObjectType, upShift: boolean, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
+	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, sumMathObjectType: SumMathObjectType, upShift: boolean, maxRe: number, pos: Vector2, size: Vector2)
 	{
-		super(maxRe, pos, size, context);
+		super(maxRe, pos, size);
 		this.Arg1 = arg1;
 		this.Arg2 = arg2;
 		this.SumMathObjectType = sumMathObjectType;
@@ -34,7 +34,7 @@ class SumMathObject extends ComplexMathObject
 
 	PaintVirt(): void
 	{
-		var oldColor = this.Context.GetColor();
+		var oldColor = this.Context2d.GetColor();
 
 		this.PaintPlain();
 		
@@ -44,27 +44,27 @@ class SumMathObject extends ComplexMathObject
 		
 		if(this.SumMathObjectType == SumMathObjectType.Front || this.SumMathObjectType == SumMathObjectType.FrontAndBack)
 		{		
-			this.Context.SetColor(this.Arg1.Color);
+			this.Context2d.SetColor(this.Arg1.Color);
 			this.DrawArrow(new Complex(0, 0), complex1);	
-			this.Context.SetColor(this.Arg2.Color);
+			this.Context2d.SetColor(this.Arg2.Color);
 			this.DrawArrow(complex1, this.Sum);
 		}
 
 		if(this.SumMathObjectType == SumMathObjectType.Back || this.SumMathObjectType == SumMathObjectType.FrontAndBack)
 		{
-			this.Context.SetColor(this.Arg2.Color);
+			this.Context2d.SetColor(this.Arg2.Color);
 			this.DrawArrow(new Complex(0, 0), complex2);	
-			this.Context.SetColor(this.Arg1.Color);
+			this.Context2d.SetColor(this.Arg1.Color);
 			this.DrawArrow(complex2, this.Sum);	
 		}
 		
-		this.Context.SetColor(this.Color);
+		this.Context2d.SetColor(this.Color);
 		if(this.UpShift)
 			this.DrawArrow(new Complex(0, 0.05), this.Sum.Plus(new Complex(0, 0.05)));
 		else
 			this.DrawArrow(new Complex(0, 0), this.Sum);
 
-		this.Context.SetColor(oldColor);
+		this.Context2d.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult

@@ -1,0 +1,1 @@
+copy !Code/LatexRenderer.js @Build/LatexRenderer.js

@@ -3,13 +3,11 @@ class Context2d
 {
 	Context: CanvasRenderingContext2D;
 	Size: Vector2;
-	Center: Vector2;
 	
 	constructor(Canvas: HTMLCanvasElement) 
 	{
 		this.Context = Canvas.getContext("2d");	
 		this.Size = new Vector2(Canvas.width, Canvas.height);
- 		this.Center = this.Size.Div(2);
 	}
 
 	BeginPath(): void
@@ -17,11 +15,13 @@ class Context2d
 		this.Context.beginPath();
 	}
 	
-	Circle(pos: Vector2, radius: number): void
+	Circle(pos: Vector2, radius: number, color: string | null): void
 	{
 		this.Arc(pos, radius, 0, 360);	
+		if(color != null)
+			this.Fill(color);
 	}
-	
+
 	Arc(pos: Vector2, radius: number, angle1: number, angle2: number): void
 	{
 		this.BeginPath();

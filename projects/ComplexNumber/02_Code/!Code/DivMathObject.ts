@@ -6,9 +6,9 @@ class DivMathObject extends ComplexMathObject
 	Div: Complex;
 	Color: string;
 	
-	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
+	constructor(arg1: SingleMathObject, arg2: SingleMathObject, color: string, maxRe: number, pos: Vector2, size: Vector2)
 	{
-		super(maxRe, pos, size, context);
+		super(maxRe, pos, size);
 		this.Arg1 = arg1;
 		this.Arg2 = arg2;
 		this.Color = color;
@@ -21,17 +21,17 @@ class DivMathObject extends ComplexMathObject
 
 	PaintVirt(): void
 	{
-		var oldColor = this.Context.GetColor();
+		var oldColor = this.Context2d.GetColor();
 		this.PaintPlain();
 		
 		var complex1 = this.Arg1.Complex;
 		var complex2 = this.Arg2.Complex;
 		this.Div = complex1.Div(complex2);	
 
-		this.Context.SetColor(this.Color);
+		this.Context2d.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Div);
 
-		this.Context.SetColor(oldColor);
+		this.Context2d.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult

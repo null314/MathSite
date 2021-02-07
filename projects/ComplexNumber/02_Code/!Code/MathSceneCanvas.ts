@@ -15,7 +15,14 @@ class MathSceneCanvas extends Canvas
 	}
 
 
-	AddSingle(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2): SingleMathObject
+	AddMathObject<T extends MathObject>(mathObject: T): T
+	{
+		mathObject.SetParent(this);
+		this.MathObjectList.push(mathObject);
+		return mathObject;
+	}
+	
+/*	AddSingle(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2): SingleMathObject
 	{
 		var mo = new SingleMathObject(complex, color, singleMathObjectType, maxRe, pos, size, this);
 		this.MathObjectList.push(mo);
@@ -49,6 +56,14 @@ class MathSceneCanvas extends Canvas
 		this.MathObjectList.push(s);
 		return s;
 	}
+
+
+	AddPlane(pos: Vector2, size: Vector2, centerShift: Vector2): TdMathObject
+	{
+		var s = new TdMathObject(pos, size, centerShift, this);
+		this.MathObjectList.push(s);
+		return s;
+	}*/
 
 	
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : void
@@ -89,12 +104,13 @@ class MathSceneCanvas extends Canvas
 
 	Repaint(): void
 	{
-		this.Context.StartFrame();
+		this.Context2d.StartFrame();
 		for(let m of this.MathObjectList)
 		{
 			m.Paint();
 		}
 		
-		this.Context.EndFrame();
+		this.Context2d.EndFrame();
 	}
+
 }

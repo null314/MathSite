@@ -12,15 +12,15 @@ namespace ObsidianConverter
 	{
 		static void Main(string[] args)
 		{
-			if (args.Length != 3 && args.Length != 2)
+			if (args.Length != 3)
 			{
-				Console.WriteLine("Needed params: inPath, outPath, prefixPath (optional)");
+				Console.WriteLine("Needed params: inPath, outPath, templatePath");
 				return;
 			}
 
 			try
 			{
-				ConvertAll(args[0], args[1], args.Length == 3 ? args[2] : "");
+				ConvertAll(args[0], args[1], args[2]);
 				Console.WriteLine("Obsidian conversion complete!");
 			}
 			catch (Exception e)
@@ -31,14 +31,14 @@ namespace ObsidianConverter
 		}
 
 
-		private static void ConvertAll(string inPath, string outPath, string subpath)
+		private static void ConvertAll(string inPath, string outPath, string templatePath)
 		{
 			var dict = new Dictionary<string, FileInfo2>();
 
+			var templateLine = File.ReadAllLines(templatePath);
+
 			foreach (var inFile in TraverseFiles(inPath).Where(IsMarkDownFile))
 			{
-				Console.WriteLine(inFile);
-
 				var hrefFile = inFile.Replace(inPath, "").Replace(".md", ".html");
 
 				var justName = Path.GetFileNameWithoutExtension(Path.GetFileName(inFile));
@@ -61,7 +61,9 @@ namespace ObsidianConverter
 
 			foreach (var pair in dict)
 			{
-				ConvertFile(pair.Value.InFile, pair.Value.OutFile, dict, subpath);
+				Console.WriteLine("convertion: " + pair.Value.InFile);
+				ConvertFile(pair.Key, pair.Value.InFile, pair.Value.OutFile, dict, templateLine);
+				Console.WriteLine("complete");
 			}
 
 
@@ -86,136 +88,160 @@ namespace ObsidianConverter
 			}
 		}
 
-		private static void ConvertFile(string inPath, string outPath, Dictionary<string, FileInfo2> dict, string subpath)
+		private static void ConvertFile(string justName, string inPath, string outPath, Dictionary<string, FileInfo2> dict, string[] templateLineArray)
 		{
-			var lines = File.ReadAllLines(inPath);
-
 			var file = new FileInfo(outPath);
 			file.Directory.Create();
 
-			var codeScopeType = CodeScopeType.None;
-			var codeContent = "";
-
 			using (var fw = new StreamWriter(outPath))
 			{
-				fw.WriteLine("<!DOCTYPE html>");
-				fw.WriteLine("<html>");
-				fw.WriteLine("<head>");
-				fw.WriteLine("<title>title</title>");
-				fw.WriteLine("</head>");
-				fw.WriteLine("<body>");
-
-				var listStarted = false;
-
-				foreach (var line in lines)
+				foreach (var templateLine in templateLineArray)
 				{
-					if (line.StartsWith("```") && codeScopeType != CodeScopeType.None)
+					if (templateLine == "{content}")
 					{
-						WriteCode(codeScopeType, codeContent, fw);
-						codeScopeType = CodeScopeType.None;
-						codeContent = null;
-						continue;
+						WriteContent(fw, inPath, dict);
 					}
-					if (codeScopeType != CodeScopeType.None)
+					else
 					{
-						codeContent += line + "\n";
-						continue;
+						var l = templateLine.Replace("{title}", justName);
+						fw.WriteLine(l);
 					}
-
-					if (line.StartsWith("```js"))
-					{
-						codeScopeType = CodeScopeType.Js;
-						codeContent = "";
-						continue;
-					}
-
-					if (line.StartsWith("```html"))
-					{
-						codeScopeType = CodeScopeType.Html;
-						codeContent = "";
-						continue;
-					}
-
-					if (line.All(c => c == ' '))
-						continue;
-
-
-					if (WithString(line, "# ", (l) =>
-					{
-						fw.WriteLine("<H1>" + l + "</H1>");
-					}))
-					{
-						continue;
-					}
-					if (WithString(line, "# ", (l) =>
-					{
-						fw.WriteLine("<H1>" + l + "</H1>");
-					}))
-					{
-						continue;
-					}
-					if (WithString(line, "## ", (l) =>
-					{
-						fw.WriteLine("<H2>" + l + "</H2>");
-					}))
-					{
-						continue;
-					}
-					if (WithString(line, "### ", (l) =>
-					{
-						fw.WriteLine("<H3>" + l + "</H3>");
-					}))
-					{
-						continue;
-					}
-					if (WithString(line, "#### ", (l) =>
-					{
-						fw.WriteLine("<H4>" + l + "</H4>");
-					}))
-					{
-						continue;
-					}
-					if (WithString(line, "##### ", (l) =>
-					{
-						fw.WriteLine("<H5>" + l + "</H5>");
-					}))
-					{
-						continue;
-					}
-					if (WithString(line, "###### ", (l) =>
-					{
-						fw.WriteLine("<H6>" + l + "</H6>");
-					}))
-					{
-						continue;
-					}
-
-					if (WithString(line, "- ", (l) =>
-					{
-						if (listStarted == false)
-						{
-							fw.WriteLine("<ul>");
-							listStarted = true;
-						}
-
-						fw.WriteLine("\t<li>" + ReplaceLink(l, dict, subpath) + "</li>");
-
-
-					}))
-					{
-						continue;
-					}
-
-					if (listStarted)
-					{
-						fw.WriteLine("</ul>");
-						listStarted = false;
-					}
-
-					fw.WriteLine("<p>" + ReplaceLink(line, dict, subpath) + "</p>");
 				}
-				fw.WriteLine("</body>");
-				fw.WriteLine("</html>");
+			}
+		}
+
+		private static void WriteContent(StreamWriter fw, string inPath, Dictionary<string, FileInfo2> dict)
+		{
+			var lines = File.ReadAllLines(inPath);
+			var codeScopeType = CodeScopeType.None;
+			var codeContent = "";
+			var listStarted = false;
+
+			foreach (var line in lines)
+			{
+//				Console.WriteLine(line);
+
+				if (line.StartsWith("```") && codeScopeType != CodeScopeType.None)
+				{
+					WriteCode(codeScopeType, codeContent, fw);
+					codeScopeType = CodeScopeType.None;
+					codeContent = null;
+					continue;
+				}
+				if (codeScopeType != CodeScopeType.None)
+				{
+					codeContent += line + "\n";
+					continue;
+				}
+
+				if (line.StartsWith("```js"))
+				{
+					codeScopeType = CodeScopeType.Js;
+					codeContent = "";
+					continue;
+				}
+
+				if (line.StartsWith("```html"))
+				{
+					codeScopeType = CodeScopeType.Html;
+					codeContent = "";
+					continue;
+				}
+
+				if (line.All(c => c == ' '))
+					continue;
+
+
+				if (WithString(line, "$$ ", (l) =>
+				{
+					if (line.EndsWith("$$") == false)
+						fw.WriteLine("FORMULA ERROR");
+					else
+						fw.WriteLine("\\[ " + l.Substring(0, l.Length - 2) + "\\]");
+
+
+				}))
+				{
+					continue;
+				}
+
+				if (WithString(line, "# ", (l) =>
+				{
+					fw.WriteLine("<H1>" + l + "</H1>");
+				}))
+				{
+					continue;
+				}
+				if (WithString(line, "# ", (l) =>
+				{
+					fw.WriteLine("<H1>" + l + "</H1>");
+				}))
+				{
+					continue;
+				}
+				if (WithString(line, "## ", (l) =>
+				{
+					fw.WriteLine("<H2>" + l + "</H2>");
+				}))
+				{
+					continue;
+				}
+				if (WithString(line, "### ", (l) =>
+				{
+					fw.WriteLine("<H3>" + l + "</H3>");
+				}))
+				{
+					continue;
+				}
+				if (WithString(line, "#### ", (l) =>
+				{
+					fw.WriteLine("<H4>" + l + "</H4>");
+				}))
+				{
+					continue;
+				}
+				if (WithString(line, "##### ", (l) =>
+				{
+					fw.WriteLine("<H5>" + l + "</H5>");
+				}))
+				{
+					continue;
+				}
+				if (WithString(line, "###### ", (l) =>
+				{
+					fw.WriteLine("<H6>" + l + "</H6>");
+				}))
+				{
+					continue;
+				}
+
+				if (WithString(line, "- ", (l) =>
+				{
+					if (listStarted == false)
+					{
+						fw.WriteLine("<ul>");
+						listStarted = true;
+					}
+
+					fw.WriteLine("\t<li>" + ReplaceLink(l, dict) + "</li>");
+				}))
+				{
+					continue;
+				}
+
+				if (listStarted)
+				{
+					fw.WriteLine("</ul>");
+					listStarted = false;
+				}
+
+				fw.WriteLine("<p>" + ReplaceLink(line, dict) + "</p>");
+			}
+
+			if (listStarted)
+			{
+				fw.WriteLine("</ul>");
+				listStarted = false;
 			}
 		}
 
@@ -235,45 +261,22 @@ namespace ObsidianConverter
 			}
 		}
 
-
-		private static string ReplaceLink(string line, Dictionary<string, FileInfo2> dict, string subpath)
+		private static string ReplacePattern(string line, string startPattern, string endPattern, Func<string, string> func)
 		{
 			var end = false;
 
 			do
 			{
-				var startIndex = line.IndexOf("[[");
-
+				var startIndex = line.IndexOf(startPattern);
 				if (startIndex >= 0)
 				{
-					var endIndex = line.IndexOf("]]", startIndex);
-					var sharpIndex = line.IndexOf("#", startIndex);
-					var lineIndex = line.IndexOf("|", startIndex);
+					var endIndex = line.IndexOf(endPattern, startIndex + startPattern.Length);
+					var content = line.Substring(startIndex + startPattern.Length, endIndex - startIndex - startPattern.Length);
+					line = line.Remove(startIndex, endIndex + endPattern.Length - startIndex);
+					var newContent = func(content);
+					line = line.Insert(startIndex, newContent);
 
-					var hasLine = lineIndex > startIndex && lineIndex < endIndex;
-
-					var linkName = hasLine ?
-						line.Substring(lineIndex + 1, endIndex - lineIndex - 1) :
-						line.Substring(startIndex + 2, endIndex - startIndex - 2);
-
-					var mdFile = hasLine ?
-						line.Substring(startIndex + 2, lineIndex - startIndex - 2) :
-						line.Substring(startIndex + 2, endIndex - startIndex - 2);
-					var removed = line.Remove(startIndex, endIndex - startIndex + 2);
-
-					if (dict.ContainsKey(mdFile) == false)
-					{
-						Console.WriteLine("ERROR!! No file " + Envelope(mdFile));
-						end = true;
-					}
-					else
-					{
-						var fileInfo = dict[mdFile];
-						var href = subpath + fileInfo.HrefFile;
-
-						line = removed.Insert(startIndex, string.Format("<a href='{0}'>{1}</a>", href, linkName));
-						end = false;
-					}
+					end = false;
 				}
 				else
 					end = true;
@@ -281,6 +284,37 @@ namespace ObsidianConverter
 			} while (end == false);
 
 			return line;
+		}
+
+		private static string ReplaceLink(string line, Dictionary<string, FileInfo2> dict)
+		{
+			line = ReplacePattern(line, "$", "$", (s) => "\\(" + s + "\\)");
+
+			return ReplacePattern(line, "[[", "]]", (link) =>
+			{
+				var lineIndex = link.IndexOf("|");
+
+				var hasLine = lineIndex >= 0;
+				var linkName = hasLine ? link.Substring(lineIndex + 1, link.Length - lineIndex - 1) : link;
+
+				var mdFile = hasLine ?
+					link.Substring(0, lineIndex) :
+					link;
+
+				if (dict.ContainsKey(mdFile) == false)
+				{
+					Console.WriteLine("ERROR!! No file " + Envelope(mdFile));
+					return "ERROR LINK " + mdFile;
+				}
+				else
+				{
+					var fileInfo = dict[mdFile];
+					var href = fileInfo.HrefFile;
+
+					return string.Format("<a href='{0}'>{1}</a>", href, linkName);
+				}
+			}); 
+
 		}
 
 

@@ -1,1 +1,1 @@
-..\ObsidianConverter\bin\Release\ObsidianConverter.exe TestVault\ TestOutput\ sws\
+..\ObsidianConverter\bin\Release\ObsidianConverter.exe TestVault\ TestOutput\ TestVault\template.html

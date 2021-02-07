@@ -15,9 +15,19 @@ class Complex
 		return new Complex(this.Re + c.Re,  this.Im + c.Im);
 	}
 
+	Minus(c: Complex): Complex
+	{
+		return new Complex(this.Re - c.Re,  this.Im - c.Im);
+	}
+
 	Mult(c: Complex): Complex
 	{
 		return new Complex(this.Re*c.Re - this.Im*c.Im, this.Re*c.Im + this.Im*c.Re);
+	}
+
+	MultNumber(c: number): Complex
+	{
+		return new Complex(this.Re*c, this.Im*c);
 	}
 
 	Magnitude(): number

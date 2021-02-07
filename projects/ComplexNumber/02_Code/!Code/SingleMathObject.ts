@@ -14,9 +14,9 @@ class SingleMathObject extends ComplexMathObject
 	Color: string;
 	SingleMathObjectType: SingleMathObjectType;
 	
-	constructor(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2, context: MathSceneCanvas)
+	constructor(complex: Complex, color: string, singleMathObjectType: SingleMathObjectType, maxRe: number, pos: Vector2, size: Vector2)
 	{
-		super(maxRe, pos, size, context);
+		super(maxRe, pos, size);
 		this.Complex = complex;
 		this.Color = color;
 		this.SingleMathObjectType = singleMathObjectType;
@@ -29,12 +29,12 @@ class SingleMathObject extends ComplexMathObject
 
 	PaintVirt(): void
 	{
-		var oldColor = this.Context.GetColor();
+		var oldColor = this.Context2d.GetColor();
 
 		this.PaintPlain();
-		this.Context.SetColor(this.Color);
+		this.Context2d.SetColor(this.Color);
 		this.DrawArrow(new Complex(0, 0), this.Complex);	
-		this.Context.SetColor(oldColor);
+		this.Context2d.SetColor(oldColor);
 	}
 
 	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult
