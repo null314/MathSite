@@ -1,5 +1,0 @@
-enum DragResult
-{
-	NoDrag,
-	Drag,	
-}
