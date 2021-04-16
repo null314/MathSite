@@ -1,0 +1,17 @@
+[
+	"../01_Code/Complex.ts",
+	"../01_Code/XImage.ts",
+	"../01_Code/Context2d.ts",
+	"../01_Code/Canvas.ts",
+	"../01_Code/DragResult.ts",
+	"../01_Code/MathObject.ts",
+	"../01_Code/TextMathObject.ts",
+	"../01_Code/ComplexMathObject.ts",
+	"../01_Code/SingleMathObject.ts",
+	"../01_Code/SumMathObject.ts",
+	"../01_Code/ConjugateMathObject.ts",
+	"../01_Code/MultMathObject.ts",
+	"../01_Code/DivMathObject.ts",
+	"../01_Code/MathSceneCanvas.ts",
+	"../01_Code/Vector2.ts"
+]

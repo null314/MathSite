@@ -1,0 +1,96 @@
+{
+  "main": {
+    "id": "9e553cdb9ffa4ecc",
+    "type": "split",
+    "children": [
+      {
+        "id": "2768ed112a2873a1",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Теории (черновики)/Логика знаний.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0b8ef0daaa1d5214",
+    "type": "split",
+    "children": [
+      {
+        "id": "d77a1d48defff435",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9274dc565c3dc6ab",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "3cad41c2dddbef9d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9b721a42ecf7a170",
+    "type": "split",
+    "children": [
+      {
+        "id": "483f0dd7a048adca",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78817e20b31566e7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Теории (черновики)/Логика знаний.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Теории (черновики)/Логика знаний.md",
+    "Теории (черновики)/Untitled.md",
+    "Логика доступа/Untitled.md",
+    "Теории (черновики)/Возведение в степень, как модуль.md",
+    "Функторы.md",
+    "Untitled.md"
+  ]
+}

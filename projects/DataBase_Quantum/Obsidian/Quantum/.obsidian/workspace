@@ -1,0 +1,100 @@
+{
+  "main": {
+    "id": "a8a98ae9fc22eef2",
+    "type": "split",
+    "children": [
+      {
+        "id": "9705ae49403c11d4",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Сайт/Часть 4. Квантовая механика ! Пример 1. Интеграл по путям, квантовая механика.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bd6cfc1eb6e66355",
+    "type": "split",
+    "children": [
+      {
+        "id": "13978d31a9bdd214",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af19af77393c4311",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b51849902ea930d2",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 478
+  },
+  "right": {
+    "id": "6246ffa8af8ed60f",
+    "type": "split",
+    "children": [
+      {
+        "id": "fee0675e54c6230c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "70325584f5ae5103",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Сайт/Часть 4. Квантовая механика ! Пример 1. Интеграл по путям, квантовая механика.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Сайт/Untitled.md",
+    "Сайт/Часть 3. Теоретическая механика ! Пример 4. Сложный маятник.md",
+    "Сайт/Часть 1. Основа ! Пример 1. Равномерное движение.md",
+    "Сайт/Часть 3. Теоретическая механика ! Пример 1. Балистика с отскоком.md",
+    "Сайт/Часть 2. Поля ! Двумерная струна.md",
+    "Untitled.md",
+    "Сайт/Часть 1. Основа ! Пример 7. Космос, столкновения, джоинты.md",
+    "Сайт/Пример 6. Много шаров, веревочки.md",
+    "Сайт/Пример 5. Гравитация.md",
+    "Сайт/Пример 4. Много шаров отскок от стен.md"
+  ]
+}

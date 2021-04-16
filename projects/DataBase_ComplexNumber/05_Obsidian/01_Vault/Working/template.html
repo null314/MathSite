@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>{title}</title>
+<style type="text/css">
+
+a:link 
+{
+  color: #386139;
+}
+a:visited 
+{
+  color: #386139;
+}
+a:hover 
+{
+  color: #386139;
+}
+a:active 
+{
+  color: #386139;
+}
+
+body
+{
+	font: 12pt Comic Sans MS; 
+	background: #e1ede9;
+}
+#wrapper 
+{
+}
+#center
+{
+    width: 1100px;
+	float: left;
+	display: block;
+}
+#left
+{
+    width: 100px;
+    height: 100px;
+	float: left;
+}
+#right
+{
+	float: left;
+}
+#up
+{
+	float: up;
+	padding-top: 50px;
+}
+#bottom
+{
+//	text-align: right;
+//	float: up;
+}
+#content
+{
+	font: 12pt Comic Sans MS; 
+	background: white;
+	color: #64a07e;
+	float: up;
+	padding: 50px;
+}
+#logoOmega
+{
+	font: 15pt candara; 
+	color: #F1AEB2;
+}
+#logoFirst
+{
+	font: 15pt candara; 
+	color: #D28F96;
+}
+#logoSecond
+{
+	font: 15pt candara; 
+	color: #D07C7F;
+}
+#title
+{
+	width: 500px;
+	color: #386139;
+}
+#mariko
+{
+	float: left;
+}
+#logo
+{
+	float: right;
+}
+
+
+
+</style>
+</head>
+<body
+	data-backgroundColor = "#FFFFFF"
+	data-fontColor = "#64a07e"
+	data-axisColor = "#AAAAAA"
+	data-arrow1Color = "#F3A276"
+	data-arrow2Color = "#A7BCA4"
+	data-arrow3Color = "#7997C0"
+	>
+
+<div id="wrapper">
+	<div id="left"></div>
+	<div id="center">
+		<div id="up">
+			<center>
+			<table><tr>
+				<td width="70px"><img width="50px" align="center"  src="Img/omega.png"></img></td>
+				<td width="900px" align="center"><span id="title"><H1>{title}</H1></span></td>
+				<td><img width="50px" align="center"  src="Img/omega.png"></img></td>
+			</tr></table>
+			</center>
+		</div>
+		<div id="content">
+
+{content}
+	
+		</div>
+		<div id="bottom">
+			<div id="mariko">
+				<td width="100px"><img align="top" width="100px" src="Img/mariko2.gif"></img></td>
+			</div>
+			<div id="logo">
+				<span id="logoOmega">Ω</span><span id="logoFirst">True</span><span id="logoSecond">Magic</span>
+			</div>
+		</div>
+	</div>
+	<div id="right"></div>
+</div>
+	
+</body>
+</html>

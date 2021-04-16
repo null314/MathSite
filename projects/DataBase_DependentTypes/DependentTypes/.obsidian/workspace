@@ -1,0 +1,97 @@
+{
+  "main": {
+    "id": "a83c7491bdf3dedb",
+    "type": "split",
+    "children": [
+      {
+        "id": "2b41f24bf492344e",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "SmartContracts/Isabelle.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "68a347ddc65be6d7",
+    "type": "split",
+    "children": [
+      {
+        "id": "8e8f935f8570fbcb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0e105065af7e99e0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "25aa3649a944c605",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f8b2c67b500680ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "b6e1d65545f9cf6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b818d5ea48932b71",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "SmartContracts/Isabelle.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "SmartContracts/Untitled.md",
+    "SmartContracts/Scilla.md",
+    "SmartContracts/Zilliqa.md",
+    "SmartContracts/Lolisa.md",
+    "SmartContracts/FVyper.md",
+    "SmartContracts/Vyper.md",
+    "SmartContracts/Solidity.md"
+  ]
+}

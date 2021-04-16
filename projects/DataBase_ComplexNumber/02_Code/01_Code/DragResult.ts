@@ -1,0 +1,5 @@
+enum DragResult
+{
+	NoDrag,
+	Drag,	
+}

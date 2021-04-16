@@ -1,0 +1,81 @@
+
+stateVar Color1 list 2 !Black !White
+stateVar Color2 list 2 !Black !White  
+stateVar Color3 list 2 !Black !White    
+state list 3 !White !White !White
+
+
+pers @Man1
+pers @Man2
+pers @Man3
+
+
+propInt $color1 = get Color1
+propInt $color2 = get Color2
+propInt $color3 = get Color3
+
+propBool $color1IsWhite = equal $color1 const Color1 !White
+propBool $color2IsWhite = equal $color2 const Color2 !White
+propBool $color3IsWhite = equal $color3 const Color3 !White
+
+
+knowledge &aboutColor1 = aboutInt $color1
+knowledge &aboutColor2 = aboutInt $color2
+knowledge &aboutColor3 = aboutInt $color3
+knowledge &aboutAnyColorIsWhite = isTrue or list 3 $color1IsWhite $color2IsWhite $color3IsWhite
+
+
+
+
+dayKnowledge @Man1 day1 combine list 3 &aboutColor2 &aboutColor3 &aboutAnyColorIsWhite
+dayKnowledge @Man2 day1 combine list 3 &aboutColor1 &aboutColor3 &aboutAnyColorIsWhite
+dayKnowledge @Man3 day1 combine list 3 &aboutColor1 &aboutColor2 &aboutAnyColorIsWhite
+
+insight @Man1 day1 ~knowColor aboutInt $color1
+insight @Man2 day1 ~knowColor aboutInt $color2
+insight @Man3 day1 ~knowColor aboutInt $color3
+
+
+propBool $man1day1Insight = persInsight @Man1 day1 ~knowColor
+propBool $man2day1Insight = persInsight @Man2 day1 ~knowColor 
+propBool $man3day1Insight = persInsight @Man3 day1 ~knowColor 
+
+
+dayKnowledge @Man1 day2 aboutBool $man2day1Insight
+dayKnowledge @Man1 day2 aboutBool $man3day1Insight
+dayKnowledge @Man2 day2 aboutBool $man1day1Insight
+dayKnowledge @Man2 day2 aboutBool $man3day1Insight
+dayKnowledge @Man3 day2 aboutBool $man1day1Insight
+dayKnowledge @Man3 day2 aboutBool $man2day1Insight
+
+propBool $man1day2Insight = persInsight @Man1 day2 ~knowColor
+propBool $man2day2Insight = persInsight @Man2 day2 ~knowColor 
+propBool $man3day2Insight = persInsight @Man3 day2 ~knowColor 
+
+
+dayKnowledge @Man1 day3 aboutBool $man2day2Insight
+dayKnowledge @Man1 day3 aboutBool $man3day2Insight
+dayKnowledge @Man2 day3 aboutBool $man1day2Insight
+dayKnowledge @Man2 day3 aboutBool $man3day2Insight
+dayKnowledge @Man3 day3 aboutBool $man1day2Insight
+dayKnowledge @Man3 day3 aboutBool $man2day2Insight
+
+
+
+printKnowledge aboutBool or list 3 $color1IsWhite $color2IsWhite $color3IsWhite
+
+
+/* printPersInsight @Man1 day1
+printPersInsight @Man2 day1
+printPersInsight @Man3 day1
+*/ 
+
+printPersInsight @Man1 day2
+printPersInsight @Man2 day2
+printPersInsight @Man3 day2
+
+printPersInsight @Man1 day3
+printPersInsight @Man2 day3
+printPersInsight @Man3 day3
+
+

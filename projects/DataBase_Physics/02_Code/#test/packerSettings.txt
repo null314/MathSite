@@ -1,0 +1,16 @@
+[
+	"../!Code/Complex.ts",
+	"../!Code/XImage.ts",
+	"../!Code/Context2d.ts",
+	"../!Code/Canvas.ts",
+	"../!Code/DragResult.ts",
+	"../!Code/MathObject.ts",
+	"../!Code/TextMathObject.ts",
+	"../!Code/MathSceneCanvas.ts",
+	"../!Code/Vector2.ts",
+	"../!Code/HeaderMathObject.ts",
+	"../!Code/Phys1MathObject.ts",
+	"../!Code/Phys2MathObject.ts",
+	"../!Code/Phys3MathObject.ts",
+	"../!Code/Phys4MathObject.ts"
+]

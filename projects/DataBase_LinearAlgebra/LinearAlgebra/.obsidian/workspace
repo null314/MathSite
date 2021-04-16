@@ -1,0 +1,92 @@
+{
+  "main": {
+    "id": "ad567273afc5d769",
+    "type": "split",
+    "children": [
+      {
+        "id": "77e1f2c472ea39e4",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Введение. Визуальная интуиция.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7dbbfd63ee08a8c7",
+    "type": "split",
+    "children": [
+      {
+        "id": "1db7ebbfeb6b0957",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b67825422394b125",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "704b4cfb16096a36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d13941df5fa267e4",
+    "type": "split",
+    "children": [
+      {
+        "id": "a5f824df976506bb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc3240862c57311f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Введение. Визуальная интуиция.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Введение. Визуальная интуиция.md",
+    "Untitled.md"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "main": {
+    "id": "37b0bcc96e2aacf5",
+    "type": "split",
+    "children": [
+      {
+        "id": "890024634df0f0f2",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Коммутативные диаграммы.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6f47451ddacc607f",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c3be5bfbcdad9a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b950b2ca2f757316",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "259028e648ce843c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c4690f62047eb691",
+    "type": "split",
+    "children": [
+      {
+        "id": "8891818baff4be33",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f6db0999d9a0a328",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Коммутативные диаграммы.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Коммутативные диаграммы.md",
+    "Untitled.md"
+  ]
+}

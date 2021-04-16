@@ -1,0 +1,5 @@
+[
+	"source/file1.txt",
+	"source/file2.txt",	
+	"source/file3.txt"
+]

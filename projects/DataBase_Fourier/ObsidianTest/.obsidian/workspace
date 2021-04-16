@@ -1,0 +1,99 @@
+{
+  "main": {
+    "id": "51d998b58655dda2",
+    "type": "split",
+    "children": [
+      {
+        "id": "a7d97afd9a161ba7",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Draft/Трейлер для Ютуба.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "916f678f53ac809c",
+    "type": "split",
+    "children": [
+      {
+        "id": "d2fdb6a2be9c07e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b8ee0d3a63837c3d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "92e1905c1f6922bd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "38c858e7304efab0",
+    "type": "split",
+    "children": [
+      {
+        "id": "ad5f6d1496416242",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "76bbd50fa16943bd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Draft/Трейлер для Ютуба.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "lastOpenFiles": [
+    "Draft/Untitled.md",
+    "База/Теория. Преобразование Фурье/= Операция ФП. Автокорреляционная функция.md",
+    "База/Теория. Преобразование Фурье/Untitled.md",
+    "База/Теория. Преобразование Фурье/Операция ФП. Автокорреляционная функция.md",
+    "Дневник/20201206.md",
+    "База/Теория. Преобразование Фурье/Пример операции ПФ. Дискретизация, ряд Котельникова.md",
+    "База/Теория. Преобразование Фурье/Пример операции ПФ. Скейл периодической дельта-функции.md",
+    "База/Теория. Преобразование Фурье/Операция ПФ. Умножение, свертка 1.md",
+    "База/Теория. Преобразование Фурье/Операция ПФ. Умножение, свертка.md",
+    "База/Теория. Преобразование Фурье/Пример операции ПФ. Скейл периодической дельта-функции 1.md"
+  ]
+}
