@@ -249,8 +249,8 @@ abstract class XObject
 		{
 			thisValue.OnUpdate(interval);
 			thisValue.ContainerCanvas.Repaint();
-			if(this.CheckForRestart())
-				this.Init();
+			if(thisValue.CheckForRestart())
+				thisValue.Init();
 		}, 
 		interval * 1000);	
 	}
@@ -588,8 +588,8 @@ class Model5XObject extends AxesXObject
 
 	OnUpdate(dt: number)
 	{
-		var gravityAcceleration = new Vector2(0, -30);
-		var wallElasticityForce = 2000;
+		const gravityAcceleration = new Vector2(0, -30);
+		const wallElasticityForce = 2000;
 
 		for(var ball of this.BallList)
 //			обнулить силы
@@ -639,7 +639,7 @@ class Model5XObject extends AxesXObject
 
 	GetCollideForce(ball1: Ball, ball2: Ball): Vector2
 	{
-		var ballElasticityForce = 600;
+		const ballElasticityForce = 600;
 		
 		var delta = ball2.Position.Minus(ball1.Position);
 		var dist = delta.Length();

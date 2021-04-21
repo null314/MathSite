@@ -20,8 +20,8 @@ class Model3XObject extends AxesXObject
 
 	OnUpdate(dt: number)
 	{
-		var gravityAcceleration = new Vector2(0, -30);
-		var ballMass = 1;
+		const gravityAcceleration = new Vector2(0, -30);
+		const ballMass = 1;
 
 //		вычислить силу гравитации			
 //		var force = gravityAcceleration * ballMass;

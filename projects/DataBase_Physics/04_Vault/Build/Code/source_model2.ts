@@ -249,8 +249,8 @@ abstract class XObject
 		{
 			thisValue.OnUpdate(interval);
 			thisValue.ContainerCanvas.Repaint();
-			if(this.CheckForRestart())
-				this.Init();
+			if(thisValue.CheckForRestart())
+				thisValue.Init();
 		}, 
 		interval * 1000);	
 	}

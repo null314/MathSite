@@ -249,8 +249,8 @@ abstract class XObject
 		{
 			thisValue.OnUpdate(interval);
 			thisValue.ContainerCanvas.Repaint();
-			if(this.CheckForRestart())
-				this.Init();
+			if(thisValue.CheckForRestart())
+				thisValue.Init();
 		}, 
 		interval * 1000);	
 	}
@@ -529,10 +529,10 @@ class Model4XObject extends AxesXObject
 
 	OnUpdate(dt: number)
 	{
-		var gravityAcceleration = new Vector2(0, -30);
-		var wallElasticityForce = 300; 
-		var ballMass = 1;
-		var ballRadius = 10;
+		const gravityAcceleration = new Vector2(0, -30);
+		const wallElasticityForce = 300; 
+		const ballMass = 1;
+		const ballRadius = 10;
 
 //		вычислить силу гравитации			
 		var force = gravityAcceleration.Mult(ballMass);

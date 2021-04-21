@@ -416,8 +416,8 @@ function codeShowHide1()
 <tr><td><pre>		{</pre></dt><tr>
 <tr><td><pre>			thisValue.OnUpdate(interval);</pre></dt><tr>
 <tr><td><pre>			thisValue.ContainerCanvas.Repaint();</pre></dt><tr>
-<tr><td><pre>			if(<span class="body">this</span>.CheckForRestart())</pre></dt><tr>
-<tr><td><pre>				<span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>			if(thisValue.CheckForRestart())</pre></dt><tr>
+<tr><td><pre>				thisValue.Init();</pre></dt><tr>
 <tr><td><pre>		}, </pre></dt><tr>
 <tr><td><pre>		interval * 1000);	</pre></dt><tr>
 <tr><td><pre>	}</pre></dt><tr>
@@ -904,8 +904,8 @@ function codeShowHide2()
 <tr><td><pre>        <span class="body">var</span> myfunc = setInterval(<span class="body">function</span> () {</pre></dt><tr>
 <tr><td><pre>            thisValue.OnUpdate(interval);</pre></dt><tr>
 <tr><td><pre>            thisValue.ContainerCanvas.Repaint();</pre></dt><tr>
-<tr><td><pre>            if (<span class="body">this</span>.CheckForRestart())</pre></dt><tr>
-<tr><td><pre>                <span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>            if (thisValue.CheckForRestart())</pre></dt><tr>
+<tr><td><pre>                thisValue.Init();</pre></dt><tr>
 <tr><td><pre>        }, interval * 1000);</pre></dt><tr>
 <tr><td><pre>    };</pre></dt><tr>
 <tr><td><pre>    <span class="body">return</span> XObject;</pre></dt><tr>

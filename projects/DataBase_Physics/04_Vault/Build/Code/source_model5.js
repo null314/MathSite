@@ -159,8 +159,8 @@ var XObject = /** @class */ (function () {
         var myfunc = setInterval(function () {
             thisValue.OnUpdate(interval);
             thisValue.ContainerCanvas.Repaint();
-            if (this.CheckForRestart())
-                this.Init();
+            if (thisValue.CheckForRestart())
+                thisValue.Init();
         }, interval * 1000);
     };
     return XObject;

@@ -416,8 +416,8 @@ function codeShowHide1()
 <tr><td><pre>		{</pre></dt><tr>
 <tr><td><pre>			thisValue.OnUpdate(interval);</pre></dt><tr>
 <tr><td><pre>			thisValue.ContainerCanvas.Repaint();</pre></dt><tr>
-<tr><td><pre>			if(<span class="body">this</span>.CheckForRestart())</pre></dt><tr>
-<tr><td><pre>				<span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>			if(thisValue.CheckForRestart())</pre></dt><tr>
+<tr><td><pre>				thisValue.Init();</pre></dt><tr>
 <tr><td><pre>		}, </pre></dt><tr>
 <tr><td><pre>		interval * 1000);	</pre></dt><tr>
 <tr><td><pre>	}</pre></dt><tr>
@@ -694,8 +694,8 @@ function codeShowHide1()
 <tr><td><pre></pre></dt><tr>
 <tr><td><pre>	OnUpdate(dt: <span class="typeClass">number</span>)</pre></dt><tr>
 <tr><td><pre>	{</pre></dt><tr>
-<tr><td><pre>		<span class="body">var</span> gravityAcceleration = <span class="body">new</span> Vector2(0, -30);</pre></dt><tr>
-<tr><td><pre>		<span class="body">var</span> ballMass = 1;</pre></dt><tr>
+<tr><td><pre>		<span class="body">const</span> gravityAcceleration = <span class="body">new</span> Vector2(0, -30);</pre></dt><tr>
+<tr><td><pre>		<span class="body">const</span> ballMass = 1;</pre></dt><tr>
 <tr><td><pre></pre></dt><tr>
 <tr><td><pre><span class="comment">//		вычислить силу гравитации			</span></pre></dt><tr>
 <tr><td><pre><span class="comment">//		var force = gravityAcceleration * ballMass;</span></pre></dt><tr>
@@ -913,8 +913,8 @@ function codeShowHide2()
 <tr><td><pre>        <span class="body">var</span> myfunc = setInterval(<span class="body">function</span> () {</pre></dt><tr>
 <tr><td><pre>            thisValue.OnUpdate(interval);</pre></dt><tr>
 <tr><td><pre>            thisValue.ContainerCanvas.Repaint();</pre></dt><tr>
-<tr><td><pre>            if (<span class="body">this</span>.CheckForRestart())</pre></dt><tr>
-<tr><td><pre>                <span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>            if (thisValue.CheckForRestart())</pre></dt><tr>
+<tr><td><pre>                thisValue.Init();</pre></dt><tr>
 <tr><td><pre>        }, interval * 1000);</pre></dt><tr>
 <tr><td><pre>    };</pre></dt><tr>
 <tr><td><pre>    <span class="body">return</span> XObject;</pre></dt><tr>
