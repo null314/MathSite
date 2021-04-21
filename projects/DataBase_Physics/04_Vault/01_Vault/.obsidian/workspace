@@ -1,16 +1,16 @@
 {
   "main": {
-    "id": "37b0bcc96e2aacf5",
+    "id": "16c4e67918d7b056",
     "type": "split",
     "children": [
       {
-        "id": "890024634df0f0f2",
+        "id": "28e7973a46484913",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Коммутативные диаграммы.md",
-            "mode": "preview"
+            "file": "Модель 1.md",
+            "mode": "source"
           }
         }
       }
@@ -18,15 +18,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6f47451ddacc607f",
+    "id": "17327ae749d9a879",
     "type": "split",
     "children": [
       {
-        "id": "7c3be5bfbcdad9a8",
+        "id": "99216a65c0ce37c7",
         "type": "tabs",
         "children": [
           {
-            "id": "b950b2ca2f757316",
+            "id": "7b3707d4d1d7f36e",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -34,7 +34,7 @@
             }
           },
           {
-            "id": "259028e648ce843c",
+            "id": "a2f8592bc12fb7be",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -55,20 +55,20 @@
     "width": 300
   },
   "right": {
-    "id": "c4690f62047eb691",
+    "id": "fdf985c49caca5ce",
     "type": "split",
     "children": [
       {
-        "id": "8891818baff4be33",
+        "id": "256e95b22e641569",
         "type": "tabs",
         "children": [
           {
-            "id": "f6db0999d9a0a328",
+            "id": "1eacd12ef146cbe5",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Коммутативные диаграммы.md",
+                "file": "Модель 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,9 +86,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "890024634df0f0f2",
+  "active": "28e7973a46484913",
   "lastOpenFiles": [
-    "Коммутативные диаграммы.md",
-    "Untitled.md"
+    "Модель 2 1.md",
+    "Модель 2.md",
+    "Модель 5.md",
+    "Модель 4.md",
+    "Модель 3.md",
+    "Модель 3 1.md",
+    "Модель 4 1.md",
+    "Модель 5 1.md",
+    "Тест кода.md",
+    "SomeFolder/Файл в папке.md"
   ]
 }

@@ -1,7 +1,8 @@
-mkdir Build\Img
-xcopy !Img Build\Img /i /y
-xcopy !CodeJs Build /i /y
+xcopy 02_Html Build /i /y
 
-"..\01_TsPacker\@Build\packer.exe" packerSettings.txt Build\source.ts
-"..\00_TsCompiler\.bin\tsc" Build\source.ts
+call compile_model1.cmd
+call compile_model2.cmd
+call compile_model3.cmd
+call compile_model4.cmd
+call compile_model5.cmd
 

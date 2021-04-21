@@ -1,1 +1,1 @@
-ghc -o @Build\packer !Code\packer.hs
+ghc -o Build\packer 01_Code\packer.hs

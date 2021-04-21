@@ -1,0 +1,1 @@
+..\03_ObsidianConverter\bin\Release\ObsidianConverter.exe 01_Vault\ Build\ 01_Vault\template.html

@@ -1,0 +1,9 @@
+[
+	"01_Code/Context2d.ts",
+	"01_Code/Canvas.ts",
+	"01_Code/XObject.ts",
+	"01_Code/ContainerCanvas.ts",
+	"01_Code/Vector2.ts",
+	"01_Code/AxesXObject.ts",
+	"01_Code/Model3XObject.ts"
+]

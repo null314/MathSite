@@ -1,0 +1,1156 @@
+<html>
+<head>
+<title>Модель 2</title>
+<style type="text/css">
+
+a:link 
+{
+  color: #386139;
+}
+a:visited 
+{
+  color: #386139;
+}
+a:hover 
+{
+  color: #386139;
+}
+a:active 
+{
+  color: #386139;
+}
+
+body
+{
+	font: 12pt Comic Sans MS; 
+	background: #e1ede9;
+}
+#wrapper 
+{
+}
+#center
+{
+    width: 1100px;
+	float: left;
+	display: block;
+}
+#left
+{
+    width: 100px;
+    height: 100px;
+	float: left;
+}
+#right
+{
+	float: left;
+}
+#up
+{
+	float: up;
+	padding-top: 50px;
+}
+#bottom
+{
+//	text-align: right;
+//	float: up;
+}
+#content
+{
+	font: 12pt Comic Sans MS; 
+	background: white;
+	color: #64a07e;
+	float: up;
+	padding: 50px;
+}
+#logoOmega
+{
+	font: 15pt candara; 
+	color: #F1AEB2;
+}
+#logoFirst
+{
+	font: 15pt candara; 
+	color: #D28F96;
+}
+#logoSecond
+{
+	font: 15pt candara; 
+	color: #D07C7F;
+}
+#title
+{
+	width: 500px;
+	color: #386139;
+}
+#mariko
+{
+	float: left;
+}
+#logo
+{
+	float: right;
+}
+.comment
+{
+	color: #AAAAAA;
+}
+.main
+{
+	color: #5555DD;
+}
+.body
+{
+	color: #00AA00;
+}
+.typeClass
+{
+	color: #DD5555;
+}
+.lineNumber
+{
+	color: #AAAAAA;
+}
+.scope
+{
+	color: #AAAAAA;
+}
+.codeBlock
+{
+	background: #EEEEEE;
+}
+
+
+
+</style>
+</head>
+<body
+	data-backgroundColor = "#FFFFFF"
+	data-fontColor = "#64a07e"
+	data-axisColor = "#AAAAAA"
+	data-arrow1Color = "#F3A276"
+	data-arrow2Color = "#A7BCA4"
+	data-arrow3Color = "#7997C0"
+	>
+
+<div id="wrapper">
+	<div id="left"></div>
+	<div id="center">
+		<div id="up">
+			<center>
+			<table><tr>
+				<td width="70px"><img width="50px" align="center"  src="Img/omega.png"></img></td>
+				<td width="900px" align="center"><span id="title"><H1>Модель 2</H1></span></td>
+				<td><img width="50px" align="center"  src="Img/omega.png"></img></td>
+			</tr></table>
+			</center>
+		</div>
+		<div id="content">
+
+<H3>Модель 2</H3>
+<canvas id='canvasModel2' width='200' height='200'></canvas>
+<script type='text/Javascript' src='Code/source_model2.js'></script>
+
+<H3>Код</H3>
+<p>TypeScript</p>
+<script type='text/Javascript'>
+function codeShowHide1()
+{
+	var div = document.getElementById('codeDiv1');
+	if (div.style.display === 'none')
+		div.style.display = 'block';
+	else
+		div.style.display = 'none';
+}
+</script>
+<button onclick = 'codeShowHide1()' > Show/Hide Code </button>
+<div id='codeDiv1' class='codeBlock'>
+<table>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Context2d.ts</span></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">class</span> Context2d</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	Context: CanvasRenderingContext2D;</pre></dt><tr>
+<tr><td><pre>	Size: Vector2;</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(Canvas: HTMLCanvasElement) </pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context = Canvas.getContext(<span class="scope">"2d"</span>);	</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Size = <span class="body">new</span> Vector2(Canvas.width, Canvas.height);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	FillTextX(text: <span class="typeClass">string</span>, pos: Vector2, font: <span class="typeClass">string</span>, color: <span class="typeClass">string</span>, halign: CanvasTextAlign, valign: CanvasTextBaseline): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.font = font == <span class="body">null</span> ? <span class="scope">"30px serif"</span> : font;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.fillStyle = color == <span class="body">null</span> ? <span class="scope">"black"</span> : color;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.textAlign = halign == <span class="body">null</span> ? <span class="scope">"center"</span> : halign;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.textBaseline  = valign == <span class="body">null</span> ? <span class="scope">"middle"</span> : valign;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.fillText(text, pos.X, pos.Y);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	ArrowX(start: Vector2, end: Vector2, length: <span class="typeClass">number</span>, width: <span class="typeClass">number</span>, color: <span class="typeClass">string</span>, lineWidth: <span class="typeClass">number</span>): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> delta = end.Minus(start);</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> tang = delta.Norm();</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> ort = tang.RotateLeft();</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> point1 = end.Plus(tang.Mult(-length)).Plus(ort.Mult(width));</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> point2 = end.Plus(tang.Mult(-length)).Plus(ort.Mult(-width));</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.strokeStyle = color == <span class="body">null</span> ? <span class="scope">"black"</span> : color;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Line(start, end);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Line(point1, end);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Line(point2, end);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	FillRectX(conner: Vector2, size: Vector2, color: <span class="typeClass">string</span>): <span class="typeClass">void</span> </pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.fillStyle = color;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.fillRect(conner.X, conner.Y, size.X, size.Y);	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	ClearRectX(conner: Vector2, size: Vector2): <span class="typeClass">void</span> </pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.clearRect(conner.X, conner.Y, size.X, size.Y);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	StrokeRectX(conner: Vector2, size: Vector2, color: <span class="typeClass">string</span>, lineWidth: <span class="typeClass">number</span>): <span class="typeClass">void</span> </pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.strokeStyle = color;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.strokeRect(conner.X, conner.Y, size.X, size.Y);	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Translate(Pos: Vector2): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.translate(Pos.X, Pos.Y);	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Scale(Pos: Vector2): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.scale(Pos.X, Pos.Y);	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	Save(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.save();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Restore(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.restore();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	CircleX(pos: Vector2, radius: <span class="typeClass">number</span>, lineColor: <span class="typeClass">string</span> | <span class="body">null</span>, lineWidth: <span class="typeClass">number</span>, fillColor: <span class="typeClass">string</span> | <span class="body">null</span>): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.beginPath();</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.arc(pos.X, pos.Y, radius, 0, 360);</pre></dt><tr>
+<tr><td><pre>		if(lineColor != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>		{		</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.strokeStyle = lineColor;</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.stroke();</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		if(fillColor != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.fillStyle = fillColor;</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.fill();</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	ArcX(pos: Vector2, radius: <span class="typeClass">number</span>, angle1: <span class="typeClass">number</span>, angle2: <span class="typeClass">number</span>, lineColor: <span class="typeClass">string</span> | <span class="body">null</span>, lineWidth: <span class="typeClass">number</span>, fillColor: <span class="typeClass">string</span> | <span class="body">null</span>): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.beginPath();</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		if(angle1 < angle2)</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.arc(pos.X, pos.Y, radius, angle1, angle2);</pre></dt><tr>
+<tr><td><pre>		else</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.arc(pos.X, pos.Y, radius, angle2, angle1);</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		if(lineColor != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>		{		</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.strokeStyle = lineColor;</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.stroke();</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		if(fillColor != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.fillStyle = fillColor;</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context.fill();</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	private Line(start: Vector2, end: Vector2): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.beginPath();</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.MoveTo(start);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.LineTo(end);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.stroke();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	private MoveTo(pos: Vector2): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.moveTo(pos.X, pos.Y);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	private LineTo(pos: Vector2): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context.lineTo(pos.X, pos.Y);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Canvas.ts</span></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">abstract</span> <span class="main">class</span> Canvas</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	Canvas: HTMLCanvasElement;</pre></dt><tr>
+<tr><td><pre>	Context2d: Context2d;</pre></dt><tr>
+<tr><td><pre>	Size: Vector2;</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(canvasId: <span class="typeClass">string</span>) </pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Canvas = document.getElementById(canvasId) as HTMLCanvasElement;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d = <span class="body">new</span> Context2d(<span class="body">this</span>.Canvas);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Size = <span class="body">new</span> Vector2(<span class="body">this</span>.Canvas.width, <span class="body">this</span>.Canvas.height);</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		let thisClosure = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Canvas.addEventListener(<span class="scope">"mousedown"</span>, <span class="body">function</span> (e: MouseEvent): <span class="typeClass">void</span> { thisClosure.OnMouseDown(e); }, false);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Canvas.addEventListener(<span class="scope">"mousemove"</span>, <span class="body">function</span> (e: MouseEvent): <span class="typeClass">void</span> { thisClosure.OnMouseMove(e); }, false);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Canvas.addEventListener(<span class="scope">"mouseup"</span>, <span class="body">function</span> (e: MouseEvent): <span class="typeClass">void</span> { thisClosure.OnMouseUp(e); }, false);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> OnMouseDownVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> OnMouseMoveVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> OnMouseUpVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	GetMousePos(event: MouseEvent): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> rect = <span class="body">this</span>.Canvas.getBoundingClientRect();</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> x = event.clientX - rect.left; </pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> y = event.clientY - rect.top;  </pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(x, y);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	OnMouseDown(event: MouseEvent) : <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.OnMouseDownVirt(event, <span class="body">this</span>.GetMousePos(event));</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	OnMouseMove(event: MouseEvent) : <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.OnMouseMoveVirt(event, <span class="body">this</span>.GetMousePos(event));</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	OnMouseUp(event: MouseEvent) : <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.OnMouseUpVirt(event, <span class="body">this</span>.GetMousePos(event));</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/XObject.ts</span></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">abstract</span> <span class="main">class</span> XObject</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	Pos: Vector2;</pre></dt><tr>
+<tr><td><pre>	BottomConnerPos: Vector2;</pre></dt><tr>
+<tr><td><pre>	Size: Vector2;</pre></dt><tr>
+<tr><td><pre>	CenterShift: Vector2;</pre></dt><tr>
+<tr><td><pre>	CenterPos: Vector2;</pre></dt><tr>
+<tr><td><pre>	ContainerCanvas: ContainerCanvas;</pre></dt><tr>
+<tr><td><pre>	Context2d: Context2d;</pre></dt><tr>
+<tr><td><pre>	InnerTopLeftConner: Vector2;</pre></dt><tr>
+<tr><td><pre>	InnerBottomRightConner: Vector2;</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(pos: Vector2, size: Vector2, centerShift: Vector2)</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Pos = pos;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Size = size;	</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.BottomConnerPos = pos.Plus(size);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.CenterShift = centerShift;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.CenterPos = pos.Plus(centerShift);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.InnerTopLeftConner = centerShift.Mult(-1);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.InnerBottomRightConner = size.Minus(centerShift);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> InitCanvas(containerCanvas: ContainerCanvas): <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> PaintVirt(): <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> OnMouseMoveVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> OnUpdate(interval: <span class="typeClass">number</span>): <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> CheckForRestart(): <span class="typeClass">boolean</span>;</pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> Init(): <span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	IsInto(pos: Vector2): <span class="typeClass">boolean</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> r = </pre></dt><tr>
+<tr><td><pre>			pos.X >= <span class="body">this</span>.Pos.X && pos.X <= <span class="body">this</span>.BottomConnerPos.X &&</pre></dt><tr>
+<tr><td><pre>			pos.Y >= <span class="body">this</span>.Pos.Y && pos.Y <= <span class="body">this</span>.BottomConnerPos.Y;</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> r;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	Paint(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.Save();</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.FillRectX(<span class="body">this</span>.Pos, <span class="body">this</span>.Size, <span class="scope">"white"</span>);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.Translate(<span class="body">this</span>.CenterPos);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.PaintVirt();	</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.Restore();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	StartTimer(interval: <span class="typeClass">number</span>): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> thisValue = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> myfunc = setInterval(<span class="body">function</span>() </pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			thisValue.OnUpdate(interval);</pre></dt><tr>
+<tr><td><pre>			thisValue.ContainerCanvas.Repaint();</pre></dt><tr>
+<tr><td><pre>			if(<span class="body">this</span>.CheckForRestart())</pre></dt><tr>
+<tr><td><pre>				<span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>		}, </pre></dt><tr>
+<tr><td><pre>		interval * 1000);	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/ContainerCanvas.ts</span></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">enum</span> DragResult</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	NoDrag,</pre></dt><tr>
+<tr><td><pre>	Drag,	</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">class</span> ContainerCanvas <span class="main">extends</span> Canvas</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	XObjectList: Array<XObject>;</pre></dt><tr>
+<tr><td><pre>	DragXObject: XObject</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(canvasId: <span class="typeClass">string</span>) </pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">super</span>(canvasId);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.XObjectList = <span class="body">new</span> Array<XObject>();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	AddXObject<T <span class="main">extends</span> XObject>(xobject: T): T</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		xobject.ContainerCanvas = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>		xobject.Context2d = <span class="body">this</span>.Context2d;</pre></dt><tr>
+<tr><td><pre>		xobject.InitCanvas(<span class="body">this</span>);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.XObjectList.push(xobject);</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> xobject;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> needRepaint = false;</pre></dt><tr>
+<tr><td><pre>		<span class="body">for</span>(let m of <span class="body">this</span>.XObjectList)</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			if(m.IsInto(pos))</pre></dt><tr>
+<tr><td><pre>			{</pre></dt><tr>
+<tr><td><pre>				<span class="body">var</span> dragResult = m.OnMouseDownVirt(event, pos.Minus(m.CenterPos));</pre></dt><tr>
+<tr><td><pre>				needRepaint = true;</pre></dt><tr>
+<tr><td><pre>				</pre></dt><tr>
+<tr><td><pre>				if(dragResult == DragResult.Drag)</pre></dt><tr>
+<tr><td><pre>					<span class="body">this</span>.DragXObject = m;</pre></dt><tr>
+<tr><td><pre>			}		</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		if(needRepaint)</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Repaint();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	OnMouseMoveVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		if(<span class="body">this</span>.DragXObject != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.DragXObject.OnMouseMoveVirt(event, pos.Minus(<span class="body">this</span>.DragXObject.CenterPos));</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Repaint();</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	OnMouseUpVirt(event: MouseEvent, pos: Vector2) : <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		if(<span class="body">this</span>.DragXObject != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.DragXObject = <span class="body">null</span>;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	Repaint(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.ClearRectX(<span class="body">new</span> Vector2(0, 0), <span class="body">this</span>.Size);</pre></dt><tr>
+<tr><td><pre>		<span class="body">for</span>(let m of <span class="body">this</span>.XObjectList)</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			m.Paint();</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Vector2.ts</span></pre></dt><tr>
+<tr><td><pre><span class="main">class</span> Vector2</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	X: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	Y: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(x: <span class="typeClass">number</span>, y: <span class="typeClass">number</span>)</pre></dt><tr>
+<tr><td><pre> 	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.X = x;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Y = y;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Plus(vec: Vector2): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X + vec.X, <span class="body">this</span>.Y + vec.Y); </pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Minus(vec: Vector2): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X - vec.X, <span class="body">this</span>.Y - vec.Y); </pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Mult(a: <span class="typeClass">number</span>): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X * a, <span class="body">this</span>.Y * a); </pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Div(a: <span class="typeClass">number</span>): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X / a, <span class="body">this</span>.Y / a); </pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Inverse(): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(-<span class="body">this</span>.X, -<span class="body">this</span>.Y);		</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	Length(): <span class="typeClass">number</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> Math.sqrt(<span class="body">this</span>.X*<span class="body">this</span>.X + <span class="body">this</span>.Y*<span class="body">this</span>.Y);	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	Norm(): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">this</span>.Div(<span class="body">this</span>.Length());		</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	RotateLeft(): Vector2</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">new</span> Vector2(-<span class="body">this</span>.Y, <span class="body">this</span>.X);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/AxesXObject.ts</span></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">class</span> XButton</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	Pos: Vector2;</pre></dt><tr>
+<tr><td><pre>	Pos2: Vector2;</pre></dt><tr>
+<tr><td><pre>	Size: Vector2;</pre></dt><tr>
+<tr><td><pre>	Color: <span class="typeClass">string</span>;</pre></dt><tr>
+<tr><td><pre>	Func: ()=><span class="typeClass">void</span>;</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(pos: Vector2, size: Vector2, color: <span class="typeClass">string</span>, func: ()=><span class="typeClass">void</span>)</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Pos = pos;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Size = size;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Pos2 = pos.Plus(size);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Color = color;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Func = func;		</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="main">abstract</span> <span class="main">class</span> AxesXObject <span class="main">extends</span> XObject</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	HeaderHeight: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	LeftX: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	RightX: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	BottomY: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	GlobalToInner: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	InnerToGobal: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	TopY: <span class="typeClass">number</span>;</pre></dt><tr>
+<tr><td><pre>	HeaderShift: Vector2;</pre></dt><tr>
+<tr><td><pre>	ButtonList: Array<XButton>;</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(headerHeight: <span class="typeClass">number</span>, leftX: <span class="typeClass">number</span>, rightX: <span class="typeClass">number</span>, bottomY: <span class="typeClass">number</span>, pos: Vector2, size: Vector2)</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">super</span>(pos, size, <span class="body">new</span> Vector2(0, 0));</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.HeaderHeight = headerHeight;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.LeftX = leftX;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.RightX = rightX</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.BottomY = bottomY;</pre></dt><tr>
+<tr><td><pre>		</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.HeaderShift = <span class="body">new</span> Vector2(0, <span class="body">this</span>.HeaderHeight);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.GlobalToInner = (<span class="body">this</span>.RightX - <span class="body">this</span>.LeftX)/<span class="body">this</span>.Size.X;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.InnerToGobal = 1 / <span class="body">this</span>.GlobalToInner;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.TopY = <span class="body">this</span>.BottomY + <span class="body">this</span>.Size.Minus(<span class="body">this</span>.HeaderShift).Y*<span class="body">this</span>.GlobalToInner;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.ButtonList = <span class="body">new</span> Array<XButton>();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	<span class="main">abstract</span> FinalPaintVirt(): <span class="typeClass">void</span>	</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	InitCanvas(containerCanvas: ContainerCanvas): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	AddButton(pos: Vector2, size: Vector2, color: <span class="typeClass">string</span>, func: ()=><span class="typeClass">void</span>): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.ButtonList.push(<span class="body">new</span> XButton(pos, size, color, func));		</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	PaintVirt(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.StrokeRectX(<span class="body">new</span> Vector2(0, 0), <span class="body">this</span>.Size, <span class="scope">"black"</span>, 1);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.StrokeRectX(<span class="body">new</span> Vector2(0, <span class="body">this</span>.HeaderHeight), <span class="body">this</span>.Size.Minus(<span class="body">this</span>.HeaderShift), <span class="scope">"black"</span>, 1);</pre></dt><tr>
+<tr><td><pre>		<span class="body">for</span>(<span class="body">var</span> b of <span class="body">this</span>.ButtonList)</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context2d.StrokeRectX(b.Pos, b.Size, b.Color, 1);</pre></dt><tr>
+<tr><td><pre>		}		</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.Translate(<span class="body">this</span>.HeaderShift.Plus(<span class="body">new</span> Vector2(-<span class="body">this</span>.LeftX*<span class="body">this</span>.InnerToGobal, <span class="body">this</span>.TopY*<span class="body">this</span>.InnerToGobal)));</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.Scale(<span class="body">new</span> Vector2(<span class="body">this</span>.InnerToGobal, -<span class="body">this</span>.InnerToGobal));</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.FinalPaintVirt();</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.Restore();</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	DrawAxis(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.ArrowX(<span class="body">new</span> Vector2(<span class="body">this</span>.LeftX, 0), <span class="body">new</span> Vector2(<span class="body">this</span>.RightX, 0), 10, 3, <span class="scope">"gray"</span>, 1);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Context2d.ArrowX(<span class="body">new</span> Vector2(0, <span class="body">this</span>.BottomY), <span class="body">new</span> Vector2(0, <span class="body">this</span>.TopY), 10, 3, <span class="scope">"gray"</span>, 1);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	OnMouseDownVirt(event: MouseEvent, pos: Vector2) : DragResult</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> p = pos.Plus(<span class="body">this</span>.CenterShift);</pre></dt><tr>
+<tr><td><pre>		<span class="body">for</span>(<span class="body">var</span> b of <span class="body">this</span>.ButtonList)</pre></dt><tr>
+<tr><td><pre>		{	</pre></dt><tr>
+<tr><td><pre>			if(p.X >= b.Pos.X && p.X <= b.Pos2.X && </pre></dt><tr>
+<tr><td><pre>				p.Y >= b.Pos.Y && p.Y <= b.Pos2.Y)</pre></dt><tr>
+<tr><td><pre>			{</pre></dt><tr>
+<tr><td><pre>				b.Func();</pre></dt><tr>
+<tr><td><pre>				<span class="body">return</span> DragResult.NoDrag;</pre></dt><tr>
+<tr><td><pre>			}</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> DragResult.NoDrag;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	OnMouseMoveVirt(event: MouseEvent, pos: Vector2): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	IsInside(pos: Vector2, radius: <span class="typeClass">number</span>): <span class="typeClass">boolean</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> result = pos.X + radius < <span class="body">this</span>.RightX &&  </pre></dt><tr>
+<tr><td><pre>			pos.X - radius > <span class="body">this</span>.LeftX &&</pre></dt><tr>
+<tr><td><pre>			pos.Y + radius < <span class="body">this</span>.TopY &&</pre></dt><tr>
+<tr><td><pre>			pos.Y - radius > <span class="body">this</span>.BottomY;</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> result;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Model2XObject.ts</span></pre></dt><tr>
+<tr><td><pre><span class="main">class</span> Model2XObject <span class="main">extends</span> AxesXObject</pre></dt><tr>
+<tr><td><pre>{</pre></dt><tr>
+<tr><td><pre>	Position: Vector2;</pre></dt><tr>
+<tr><td><pre>	DPosition: Vector2;</pre></dt><tr>
+<tr><td><pre>	DDPosition: Vector2;</pre></dt><tr>
+<tr><td><pre>	</pre></dt><tr>
+<tr><td><pre>	<span class="main">constructor</span>(pos: Vector2, size: Vector2)</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">super</span>(20, -10, 100, -10, pos, size)</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.StartTimer(0.01);</pre></dt><tr>
+<tr><td><pre>		<span class="body">var</span> thisVar = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.AddButton(<span class="body">new</span> Vector2(5, 5), <span class="body">new</span> Vector2(10, 10), <span class="scope">"black"</span>, <span class="body">function</span>(){ thisVar.Init();});	</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	Init(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Position = <span class="body">new</span> Vector2(10, 10);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.DPosition = <span class="body">new</span> Vector2(20, 40);</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.DDPosition = <span class="body">new</span> Vector2(0, -30);</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	OnUpdate(dt: <span class="typeClass">number</span>)</pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre><span class="comment">//		правило производной		</span></pre></dt><tr>
+<tr><td><pre><span class="comment">//		this.Position = this.Position + this.DPosition * dt;</span></pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.Position = <span class="body">this</span>.Position.Plus(<span class="body">this</span>.DPosition.Mult(dt));</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="comment">//		правило производной		</span></pre></dt><tr>
+<tr><td><pre><span class="comment">//		this.DPosition = this.DPosition + this.DDPosition * dt;</span></pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.DPosition = <span class="body">this</span>.DPosition.Plus(<span class="body">this</span>.DDPosition.Mult(dt));</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	CheckForRestart(): <span class="typeClass">boolean</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">return</span> <span class="body">this</span>.Position.X > 100;</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre>	FinalPaintVirt(): <span class="typeClass">void</span></pre></dt><tr>
+<tr><td><pre>	{</pre></dt><tr>
+<tr><td><pre>		<span class="body">this</span>.DrawAxis();</pre></dt><tr>
+<tr><td><pre>		if(<span class="body">this</span>.IsInside(<span class="body">this</span>.Position, 10))	</pre></dt><tr>
+<tr><td><pre>		{</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context2d.CircleX(<span class="body">this</span>.Position, 10, <span class="scope">"#cbc7ae"</span>, 1, <span class="scope">"#cbc7ae"</span>);</pre></dt><tr>
+<tr><td><pre>			<span class="body">this</span>.Context2d.ArrowX(<span class="body">this</span>.Position, <span class="body">this</span>.Position.Plus(<span class="body">this</span>.DPosition), 5, 2, <span class="scope">"grey"</span>, 1);</pre></dt><tr>
+<tr><td><pre>		}</pre></dt><tr>
+<tr><td><pre>	}</pre></dt><tr>
+<tr><td><pre>}</pre></dt><tr>
+<tr><td><pre></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> container = <span class="body">new</span> ContainerCanvas(<span class="scope">"canvasModel2"</span>);</pre></dt><tr>
+<tr><td><pre>container.AddXObject(<span class="body">new</span> Model2XObject(<span class="body">new</span> Vector2(0, 0), <span class="body">new</span> Vector2(200, 200)));</pre></dt><tr>
+<tr><td><pre>container.Repaint();</pre></dt><tr>
+</table>
+</div>
+<script type='text/Javascript'>
+document.getElementById('codeDiv1').style.display = 'none';
+</script>
+<p>JavaScript</p>
+<script type='text/Javascript'>
+function codeShowHide2()
+{
+	var div = document.getElementById('codeDiv2');
+	if (div.style.display === 'none')
+		div.style.display = 'block';
+	else
+		div.style.display = 'none';
+}
+</script>
+<button onclick = 'codeShowHide2()' > Show/Hide Code </button>
+<div id='codeDiv2' class='codeBlock'>
+<table>
+<tr><td><pre><span class="comment">// 01_Code/Context2d.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> __extends = (<span class="body">this</span> && <span class="body">this</span>.__extends) || (<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>    <span class="body">var</span> extendStatics = <span class="body">function</span> (d, b) {</pre></dt><tr>
+<tr><td><pre>        extendStatics = <span class="body">Object</span>.setPrototypeOf ||</pre></dt><tr>
+<tr><td><pre>            ({ __proto__: [] } instanceof Array && <span class="body">function</span> (d, b) { d.__proto__ = b; }) ||</pre></dt><tr>
+<tr><td><pre>            <span class="body">function</span> (d, b) { <span class="body">for</span> (<span class="body">var</span> p in b) if (<span class="body">Object</span>.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> extendStatics(d, b);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> <span class="body">function</span> (d, b) {</pre></dt><tr>
+<tr><td><pre>        extendStatics(d, b);</pre></dt><tr>
+<tr><td><pre>        <span class="body">function</span> __() { <span class="body">this</span>.<span class="main">constructor</span> = d; }</pre></dt><tr>
+<tr><td><pre>        d.prototype = b === <span class="body">null</span> ? <span class="body">Object</span>.create(b) : (__.prototype = b.prototype, <span class="body">new</span> __());</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>})();</pre></dt><tr>
+<tr><td><pre><span class="body">var</span> Context2d = /** @<span class="main">class</span> */ (<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> Context2d(Canvas) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context = Canvas.getContext(<span class="scope">"2d"</span>);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Size = <span class="body">new</span> Vector2(Canvas.width, Canvas.height);</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.FillTextX = <span class="body">function</span> (text, pos, font, color, halign, valign) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.font = font == <span class="body">null</span> ? <span class="scope">"30px serif"</span> : font;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.fillStyle = color == <span class="body">null</span> ? <span class="scope">"black"</span> : color;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.textAlign = halign == <span class="body">null</span> ? <span class="scope">"center"</span> : halign;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.textBaseline = valign == <span class="body">null</span> ? <span class="scope">"middle"</span> : valign;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.fillText(text, pos.X, pos.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.ArrowX = <span class="body">function</span> (start, end, length, width, color, lineWidth) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> delta = end.Minus(start);</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> tang = delta.Norm();</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> ort = tang.RotateLeft();</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> point1 = end.Plus(tang.Mult(-length)).Plus(ort.Mult(width));</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> point2 = end.Plus(tang.Mult(-length)).Plus(ort.Mult(-width));</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.strokeStyle = color == <span class="body">null</span> ? <span class="scope">"black"</span> : color;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Line(start, end);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Line(point1, end);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Line(point2, end);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.FillRectX = <span class="body">function</span> (conner, size, color) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.fillStyle = color;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.fillRect(conner.X, conner.Y, size.X, size.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.ClearRectX = <span class="body">function</span> (conner, size) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.clearRect(conner.X, conner.Y, size.X, size.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.StrokeRectX = <span class="body">function</span> (conner, size, color, lineWidth) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.strokeStyle = color;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.strokeRect(conner.X, conner.Y, size.X, size.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.Translate = <span class="body">function</span> (Pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.translate(Pos.X, Pos.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.Scale = <span class="body">function</span> (Pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.scale(Pos.X, Pos.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.Save = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.save();</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.Restore = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.restore();</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.CircleX = <span class="body">function</span> (pos, radius, lineColor, lineWidth, fillColor) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.beginPath();</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.arc(pos.X, pos.Y, radius, 0, 360);</pre></dt><tr>
+<tr><td><pre>        if (lineColor != <span class="body">null</span>) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.strokeStyle = lineColor;</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.stroke();</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>        if (fillColor != <span class="body">null</span>) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.fillStyle = fillColor;</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.fill();</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.ArcX = <span class="body">function</span> (pos, radius, angle1, angle2, lineColor, lineWidth, fillColor) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.beginPath();</pre></dt><tr>
+<tr><td><pre>        if (angle1 < angle2)</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.arc(pos.X, pos.Y, radius, angle1, angle2);</pre></dt><tr>
+<tr><td><pre>        else</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.arc(pos.X, pos.Y, radius, angle2, angle1);</pre></dt><tr>
+<tr><td><pre>        if (lineColor != <span class="body">null</span>) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.strokeStyle = lineColor;</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.lineWidth = lineWidth;</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.stroke();</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>        if (fillColor != <span class="body">null</span>) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.fillStyle = fillColor;</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context.fill();</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.Line = <span class="body">function</span> (start, end) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.beginPath();</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.MoveTo(start);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.LineTo(end);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.stroke();</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.MoveTo = <span class="body">function</span> (pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.moveTo(pos.X, pos.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Context2d.prototype.LineTo = <span class="body">function</span> (pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context.lineTo(pos.X, pos.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> Context2d;</pre></dt><tr>
+<tr><td><pre>}());</pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Canvas.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> Canvas = /** @<span class="main">class</span> */ (<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> Canvas(canvasId) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Canvas = document.getElementById(canvasId);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d = <span class="body">new</span> Context2d(<span class="body">this</span>.Canvas);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Size = <span class="body">new</span> Vector2(<span class="body">this</span>.Canvas.width, <span class="body">this</span>.Canvas.height);</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> thisClosure = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Canvas.addEventListener(<span class="scope">"mousedown"</span>, <span class="body">function</span> (e) { thisClosure.OnMouseDown(e); }, false);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Canvas.addEventListener(<span class="scope">"mousemove"</span>, <span class="body">function</span> (e) { thisClosure.OnMouseMove(e); }, false);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Canvas.addEventListener(<span class="scope">"mouseup"</span>, <span class="body">function</span> (e) { thisClosure.OnMouseUp(e); }, false);</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    Canvas.prototype.GetMousePos = <span class="body">function</span> (event) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> rect = <span class="body">this</span>.Canvas.getBoundingClientRect();</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> x = event.clientX - rect.left;</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> y = event.clientY - rect.top;</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(x, y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Canvas.prototype.OnMouseDown = <span class="body">function</span> (event) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.OnMouseDownVirt(event, <span class="body">this</span>.GetMousePos(event));</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Canvas.prototype.OnMouseMove = <span class="body">function</span> (event) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.OnMouseMoveVirt(event, <span class="body">this</span>.GetMousePos(event));</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Canvas.prototype.OnMouseUp = <span class="body">function</span> (event) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.OnMouseUpVirt(event, <span class="body">this</span>.GetMousePos(event));</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> Canvas;</pre></dt><tr>
+<tr><td><pre>}());</pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/XObject.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> XObject = /** @<span class="main">class</span> */ (<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> XObject(pos, size, centerShift) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Pos = pos;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Size = size;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.BottomConnerPos = pos.Plus(size);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.CenterShift = centerShift;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.CenterPos = pos.Plus(centerShift);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.InnerTopLeftConner = centerShift.Mult(-1);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.InnerBottomRightConner = size.Minus(centerShift);</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    XObject.prototype.IsInto = <span class="body">function</span> (pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> r = pos.X >= <span class="body">this</span>.Pos.X && pos.X <= <span class="body">this</span>.BottomConnerPos.X &&</pre></dt><tr>
+<tr><td><pre>            pos.Y >= <span class="body">this</span>.Pos.Y && pos.Y <= <span class="body">this</span>.BottomConnerPos.Y;</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> r;</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    XObject.prototype.Paint = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.Save();</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.FillRectX(<span class="body">this</span>.Pos, <span class="body">this</span>.Size, <span class="scope">"white"</span>);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.Translate(<span class="body">this</span>.CenterPos);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.PaintVirt();</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.Restore();</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    XObject.prototype.StartTimer = <span class="body">function</span> (interval) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> thisValue = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> myfunc = setInterval(<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>            thisValue.OnUpdate(interval);</pre></dt><tr>
+<tr><td><pre>            thisValue.ContainerCanvas.Repaint();</pre></dt><tr>
+<tr><td><pre>            if (<span class="body">this</span>.CheckForRestart())</pre></dt><tr>
+<tr><td><pre>                <span class="body">this</span>.Init();</pre></dt><tr>
+<tr><td><pre>        }, interval * 1000);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> XObject;</pre></dt><tr>
+<tr><td><pre>}());</pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/ContainerCanvas.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> DragResult;</pre></dt><tr>
+<tr><td><pre>(<span class="body">function</span> (DragResult) {</pre></dt><tr>
+<tr><td><pre>    DragResult[DragResult[<span class="scope">"NoDrag"</span>] = 0] = <span class="scope">"NoDrag"</span>;</pre></dt><tr>
+<tr><td><pre>    DragResult[DragResult[<span class="scope">"Drag"</span>] = 1] = <span class="scope">"Drag"</span>;</pre></dt><tr>
+<tr><td><pre>})(DragResult || (DragResult = {}));</pre></dt><tr>
+<tr><td><pre><span class="body">var</span> ContainerCanvas = /** @<span class="main">class</span> */ (<span class="body">function</span> (_super) {</pre></dt><tr>
+<tr><td><pre>    __extends(ContainerCanvas, _super);</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> ContainerCanvas(canvasId) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> _this = _super.call(<span class="body">this</span>, canvasId) || <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>        _this.XObjectList = <span class="body">new</span> Array();</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> _this;</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    ContainerCanvas.prototype.AddXObject = <span class="body">function</span> (xobject) {</pre></dt><tr>
+<tr><td><pre>        xobject.ContainerCanvas = <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>        xobject.Context2d = <span class="body">this</span>.Context2d;</pre></dt><tr>
+<tr><td><pre>        xobject.InitCanvas(<span class="body">this</span>);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.XObjectList.push(xobject);</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> xobject;</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    ContainerCanvas.prototype.OnMouseDownVirt = <span class="body">function</span> (event, pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> needRepaint = false;</pre></dt><tr>
+<tr><td><pre>        <span class="body">for</span> (<span class="body">var</span> _i = 0, _a = <span class="body">this</span>.XObjectList; _i < _a.length; _i++) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">var</span> m = _a[_i];</pre></dt><tr>
+<tr><td><pre>            if (m.IsInto(pos)) {</pre></dt><tr>
+<tr><td><pre>                <span class="body">var</span> dragResult = m.OnMouseDownVirt(event, pos.Minus(m.CenterPos));</pre></dt><tr>
+<tr><td><pre>                needRepaint = true;</pre></dt><tr>
+<tr><td><pre>                if (dragResult == DragResult.Drag)</pre></dt><tr>
+<tr><td><pre>                    <span class="body">this</span>.DragXObject = m;</pre></dt><tr>
+<tr><td><pre>            }</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>        if (needRepaint)</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Repaint();</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    ContainerCanvas.prototype.OnMouseMoveVirt = <span class="body">function</span> (event, pos) {</pre></dt><tr>
+<tr><td><pre>        if (<span class="body">this</span>.DragXObject != <span class="body">null</span>) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.DragXObject.OnMouseMoveVirt(event, pos.Minus(<span class="body">this</span>.DragXObject.CenterPos));</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Repaint();</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    ContainerCanvas.prototype.OnMouseUpVirt = <span class="body">function</span> (event, pos) {</pre></dt><tr>
+<tr><td><pre>        if (<span class="body">this</span>.DragXObject != <span class="body">null</span>)</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.DragXObject = <span class="body">null</span>;</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    ContainerCanvas.prototype.Repaint = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.ClearRectX(<span class="body">new</span> Vector2(0, 0), <span class="body">this</span>.Size);</pre></dt><tr>
+<tr><td><pre>        <span class="body">for</span> (<span class="body">var</span> _i = 0, _a = <span class="body">this</span>.XObjectList; _i < _a.length; _i++) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">var</span> m = _a[_i];</pre></dt><tr>
+<tr><td><pre>            m.Paint();</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> ContainerCanvas;</pre></dt><tr>
+<tr><td><pre>}(Canvas));</pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Vector2.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> Vector2 = /** @<span class="main">class</span> */ (<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> Vector2(x, y) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.X = x;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Y = y;</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Plus = <span class="body">function</span> (vec) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X + vec.X, <span class="body">this</span>.Y + vec.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Minus = <span class="body">function</span> (vec) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X - vec.X, <span class="body">this</span>.Y - vec.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Mult = <span class="body">function</span> (a) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X * a, <span class="body">this</span>.Y * a);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Div = <span class="body">function</span> (a) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(<span class="body">this</span>.X / a, <span class="body">this</span>.Y / a);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Inverse = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(-<span class="body">this</span>.X, -<span class="body">this</span>.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Length = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> Math.sqrt(<span class="body">this</span>.X * <span class="body">this</span>.X + <span class="body">this</span>.Y * <span class="body">this</span>.Y);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.Norm = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">this</span>.Div(<span class="body">this</span>.Length());</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Vector2.prototype.RotateLeft = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">new</span> Vector2(-<span class="body">this</span>.Y, <span class="body">this</span>.X);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> Vector2;</pre></dt><tr>
+<tr><td><pre>}());</pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/AxesXObject.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> XButton = /** @<span class="main">class</span> */ (<span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> XButton(pos, size, color, func) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Pos = pos;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Size = size;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Pos2 = pos.Plus(size);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Color = color;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Func = func;</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> XButton;</pre></dt><tr>
+<tr><td><pre>}());</pre></dt><tr>
+<tr><td><pre><span class="body">var</span> AxesXObject = /** @<span class="main">class</span> */ (<span class="body">function</span> (_super) {</pre></dt><tr>
+<tr><td><pre>    __extends(AxesXObject, _super);</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> AxesXObject(headerHeight, leftX, rightX, bottomY, pos, size) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> _this = _super.call(<span class="body">this</span>, pos, size, <span class="body">new</span> Vector2(0, 0)) || <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>        _this.HeaderHeight = headerHeight;</pre></dt><tr>
+<tr><td><pre>        _this.LeftX = leftX;</pre></dt><tr>
+<tr><td><pre>        _this.RightX = rightX;</pre></dt><tr>
+<tr><td><pre>        _this.BottomY = bottomY;</pre></dt><tr>
+<tr><td><pre>        _this.HeaderShift = <span class="body">new</span> Vector2(0, _this.HeaderHeight);</pre></dt><tr>
+<tr><td><pre>        _this.GlobalToInner = (_this.RightX - _this.LeftX) / _this.Size.X;</pre></dt><tr>
+<tr><td><pre>        _this.InnerToGobal = 1 / _this.GlobalToInner;</pre></dt><tr>
+<tr><td><pre>        _this.TopY = _this.BottomY + _this.Size.Minus(_this.HeaderShift).Y * _this.GlobalToInner;</pre></dt><tr>
+<tr><td><pre>        _this.ButtonList = <span class="body">new</span> Array();</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> _this;</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.InitCanvas = <span class="body">function</span> (containerCanvas) {</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.AddButton = <span class="body">function</span> (pos, size, color, func) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.ButtonList.push(<span class="body">new</span> XButton(pos, size, color, func));</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.PaintVirt = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.StrokeRectX(<span class="body">new</span> Vector2(0, 0), <span class="body">this</span>.Size, <span class="scope">"black"</span>, 1);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.StrokeRectX(<span class="body">new</span> Vector2(0, <span class="body">this</span>.HeaderHeight), <span class="body">this</span>.Size.Minus(<span class="body">this</span>.HeaderShift), <span class="scope">"black"</span>, 1);</pre></dt><tr>
+<tr><td><pre>        <span class="body">for</span> (<span class="body">var</span> _i = 0, _a = <span class="body">this</span>.ButtonList; _i < _a.length; _i++) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">var</span> b = _a[_i];</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context2d.StrokeRectX(b.Pos, b.Size, b.Color, 1);</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.Translate(<span class="body">this</span>.HeaderShift.Plus(<span class="body">new</span> Vector2(-<span class="body">this</span>.LeftX * <span class="body">this</span>.InnerToGobal, <span class="body">this</span>.TopY * <span class="body">this</span>.InnerToGobal)));</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.Scale(<span class="body">new</span> Vector2(<span class="body">this</span>.InnerToGobal, -<span class="body">this</span>.InnerToGobal));</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.FinalPaintVirt();</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.Restore();</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.DrawAxis = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.ArrowX(<span class="body">new</span> Vector2(<span class="body">this</span>.LeftX, 0), <span class="body">new</span> Vector2(<span class="body">this</span>.RightX, 0), 10, 3, <span class="scope">"gray"</span>, 1);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Context2d.ArrowX(<span class="body">new</span> Vector2(0, <span class="body">this</span>.BottomY), <span class="body">new</span> Vector2(0, <span class="body">this</span>.TopY), 10, 3, <span class="scope">"gray"</span>, 1);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.OnMouseDownVirt = <span class="body">function</span> (event, pos) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> p = pos.Plus(<span class="body">this</span>.CenterShift);</pre></dt><tr>
+<tr><td><pre>        <span class="body">for</span> (<span class="body">var</span> _i = 0, _a = <span class="body">this</span>.ButtonList; _i < _a.length; _i++) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">var</span> b = _a[_i];</pre></dt><tr>
+<tr><td><pre>            if (p.X >= b.Pos.X && p.X <= b.Pos2.X &&</pre></dt><tr>
+<tr><td><pre>                p.Y >= b.Pos.Y && p.Y <= b.Pos2.Y) {</pre></dt><tr>
+<tr><td><pre>                b.Func();</pre></dt><tr>
+<tr><td><pre>                <span class="body">return</span> DragResult.NoDrag;</pre></dt><tr>
+<tr><td><pre>            }</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> DragResult.NoDrag;</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.OnMouseMoveVirt = <span class="body">function</span> (event, pos) {</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    AxesXObject.prototype.IsInside = <span class="body">function</span> (pos, radius) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> result = pos.X + radius < <span class="body">this</span>.RightX &&</pre></dt><tr>
+<tr><td><pre>            pos.X - radius > <span class="body">this</span>.LeftX &&</pre></dt><tr>
+<tr><td><pre>            pos.Y + radius < <span class="body">this</span>.TopY &&</pre></dt><tr>
+<tr><td><pre>            pos.Y - radius > <span class="body">this</span>.BottomY;</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> result;</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> AxesXObject;</pre></dt><tr>
+<tr><td><pre>}(XObject));</pre></dt><tr>
+<tr><td><pre><span class="comment">// 01_Code/Model2XObject.ts</span></pre></dt><tr>
+<tr><td><pre><span class="body">var</span> Model2XObject = /** @<span class="main">class</span> */ (<span class="body">function</span> (_super) {</pre></dt><tr>
+<tr><td><pre>    __extends(Model2XObject, _super);</pre></dt><tr>
+<tr><td><pre>    <span class="body">function</span> Model2XObject(pos, size) {</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> _this = _super.call(<span class="body">this</span>, 20, -10, 100, -10, pos, size) || <span class="body">this</span>;</pre></dt><tr>
+<tr><td><pre>        _this.Init();</pre></dt><tr>
+<tr><td><pre>        _this.StartTimer(0.01);</pre></dt><tr>
+<tr><td><pre>        <span class="body">var</span> thisVar = _this;</pre></dt><tr>
+<tr><td><pre>        _this.AddButton(<span class="body">new</span> Vector2(5, 5), <span class="body">new</span> Vector2(10, 10), <span class="scope">"black"</span>, <span class="body">function</span> () { thisVar.Init(); });</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> _this;</pre></dt><tr>
+<tr><td><pre>    }</pre></dt><tr>
+<tr><td><pre>    Model2XObject.prototype.Init = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Position = <span class="body">new</span> Vector2(10, 10);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.DPosition = <span class="body">new</span> Vector2(20, 40);</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.DDPosition = <span class="body">new</span> Vector2(0, -30);</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Model2XObject.prototype.OnUpdate = <span class="body">function</span> (dt) {</pre></dt><tr>
+<tr><td><pre>        //		правило производной		</pre></dt><tr>
+<tr><td><pre>        //		<span class="body">this</span>.Position = <span class="body">this</span>.Position + <span class="body">this</span>.DPosition * dt;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.Position = <span class="body">this</span>.Position.Plus(<span class="body">this</span>.DPosition.Mult(dt));</pre></dt><tr>
+<tr><td><pre>        //		правило производной		</pre></dt><tr>
+<tr><td><pre>        //		<span class="body">this</span>.DPosition = <span class="body">this</span>.DPosition + <span class="body">this</span>.DDPosition * dt;</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.DPosition = <span class="body">this</span>.DPosition.Plus(<span class="body">this</span>.DDPosition.Mult(dt));</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Model2XObject.prototype.CheckForRestart = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">return</span> <span class="body">this</span>.Position.X > 100;</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    Model2XObject.prototype.FinalPaintVirt = <span class="body">function</span> () {</pre></dt><tr>
+<tr><td><pre>        <span class="body">this</span>.DrawAxis();</pre></dt><tr>
+<tr><td><pre>        if (<span class="body">this</span>.IsInside(<span class="body">this</span>.Position, 10)) {</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context2d.CircleX(<span class="body">this</span>.Position, 10, <span class="scope">"#cbc7ae"</span>, 1, <span class="scope">"#cbc7ae"</span>);</pre></dt><tr>
+<tr><td><pre>            <span class="body">this</span>.Context2d.ArrowX(<span class="body">this</span>.Position, <span class="body">this</span>.Position.Plus(<span class="body">this</span>.DPosition), 5, 2, <span class="scope">"grey"</span>, 1);</pre></dt><tr>
+<tr><td><pre>        }</pre></dt><tr>
+<tr><td><pre>    };</pre></dt><tr>
+<tr><td><pre>    <span class="body">return</span> Model2XObject;</pre></dt><tr>
+<tr><td><pre>}(AxesXObject));</pre></dt><tr>
+<tr><td><pre><span class="body">var</span> container = <span class="body">new</span> ContainerCanvas(<span class="scope">"canvasModel2"</span>);</pre></dt><tr>
+<tr><td><pre>container.AddXObject(<span class="body">new</span> Model2XObject(<span class="body">new</span> Vector2(0, 0), <span class="body">new</span> Vector2(200, 200)));</pre></dt><tr>
+<tr><td><pre>container.Repaint();</pre></dt><tr>
+</table>
+</div>
+<script type='text/Javascript'>
+document.getElementById('codeDiv2').style.display = 'none';
+</script>
+<p>HTML</p>
+<script type='text/Javascript'>
+function codeShowHide3()
+{
+	var div = document.getElementById('codeDiv3');
+	if (div.style.display === 'none')
+		div.style.display = 'block';
+	else
+		div.style.display = 'none';
+}
+</script>
+<button onclick = 'codeShowHide3()' > Show/Hide Code </button>
+<div id='codeDiv3' class='codeBlock'>
+<table>
+<tr><td><pre>&lt;<span class="main">html</span>&gt;</pre></dt><tr>
+<tr><td><pre>	&lt;<span class="main">head</span>&gt;</pre></dt><tr>
+<tr><td><pre>		&lt;<span class="main">title</span>&gt;Model 2&lt;<span class="main">/title</span>&gt;</pre></dt><tr>
+<tr><td><pre>	&lt;<span class="main">/head</span>&gt;</pre></dt><tr>
+<tr><td><pre>	&lt;<span class="main">body</span>&gt;</pre></dt><tr>
+<tr><td><pre>		&lt;<span class="main">h1</span>&gt;Model 2&lt;<span class="main">/h1</span>&gt;</pre></dt><tr>
+<tr><td><pre>		&lt;<span class="main">canvas</span> <span class="typeClass">id</span>=<span class="scope">'canvasModel2'</span> <span class="typeClass">width</span>=<span class="scope">'200'</span> <span class="typeClass">height</span>=<span class="scope">'200'</span>&gt;  &lt;<span class="main">/canvas</span>&gt;</pre></dt><tr>
+<tr><td><pre>		&lt;<span class="main">script</span> <span class="typeClass">type</span>=<span class="scope">'text/Javascript'</span> <span class="typeClass">src</span>=<span class="scope">'source_model2.js'</span>&gt;&lt;<span class="main">/script</span>&gt;</pre></dt><tr>
+<tr><td><pre>	&lt;<span class="main">/body</span>&gt;</pre></dt><tr>
+<tr><td><pre>&lt;<span class="main">/html</span>&gt;</pre></dt><tr>
+</table>
+</div>
+<script type='text/Javascript'>
+document.getElementById('codeDiv3').style.display = 'none';
+</script>
+	
+		</div>
+		<div id="bottom">
+			<div id="mariko">
+				<td width="100px"><img align="top" width="100px" src="Img/mariko.gif"></img></td>
+			</div>
+			<div id="logo">
+				<span id="logoOmega">Ω</span><span id="logoFirst">True</span><span id="logoSecond">Magic</span>
+			</div>
+		</div>
+	</div>
+	<div id="right"></div>
+</div>
+	
+</body>
+</html>
