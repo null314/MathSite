@@ -1,0 +1,585 @@
+{
+	"ConstructorList": 
+	[
+		{
+			"Constructor": "RuneTelekinesis",
+			"Type": "!Generator",
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "3"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "RuneElectroinesis",
+			"Type": "!Generator",
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "3"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "FuelEngine",
+			"Type": "!Generator",
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "2"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "1"
+				}
+			]
+		},
+		{
+			"Constructor": "ElectricEngine",
+			"Type": "!Generator",
+			"ArgList": [ "!Generator" ],
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "(slotParam 1 electricEnergy)"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(slotParam 1 manaConsumption)"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(slotParam 1 fuelConsumption)"
+				}
+			]
+		},
+		{
+			"Constructor": "Dinamo",
+			"Type": "!Generator",
+			"ArgList": [ "!Generator" ],
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "(slotParam 1 rotationalEnergy)"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(slotParam 1 manaConsumption)"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(slotParam 1 fuelConsumption)"
+				}
+			]
+		},
+		{
+			"Constructor": "SolarBattery",
+			"Type": "!Generator",
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "1"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "Stingray",
+			"Type": "!Generator",
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "2"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "1"
+				}
+			]
+		},
+		{
+			"Constructor": "Hamster",
+			"Type": "!Generator",
+			"ParamList": [
+				{
+					"Name": "electricEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "1"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "ElectricTransformator",
+			"Type": "!Generator",
+			"ArgList": [ "!Generator", "!Generator" ],
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "(+ (slotParam 1 electricEnergy) (slotParam 2 electricEnergy))"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(+ (slotParam 1 manaConsumption) (slotParam 2 manaConsumption))"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(+ (slotParam 1 fuelConsumption) (slotParam 2 fuelConsumption))"
+				}
+			]
+		},
+		{
+			"Constructor": "Gears",
+			"Type": "!Generator",
+			"ArgList": [ "!Generator", "!Generator" ],
+			"ParamList": 
+			[
+				{
+					"Name": "electricEnergy",
+					"Value": "0"
+				},
+				{
+					"Name": "rotationalEnergy",
+					"Value": "(+ (slotParam 1 rotationalEnergy) (slotParam 2 rotationalEnergy))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(+ (slotParam 1 manaConsumption) (slotParam 2 manaConsumption))"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(+ (slotParam 1 fuelConsumption) (slotParam 2 fuelConsumption))"
+				}
+			]
+		},
+
+
+
+		{
+			"Constructor": "Fire",
+			"Type": "!Ammo",
+			"ParamList": [
+				{
+					"Name": "ammoDamage",
+					"Value": "4"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "1"
+				}
+			]
+		},
+		{
+			"Constructor": "Fireball",
+			"Type": "!Ammo",
+			"ParamList": [
+				{
+					"Name": "ammoDamage",
+					"Value": "9"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "1"
+				}
+			]
+		},
+		{
+			"Constructor": "Iceball",
+			"Type": "!Ammo",
+			"ParamList": [
+				{
+					"Name": "ammoDamage",
+					"Value": "5"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "BulletClip",
+			"Type": "!Ammo",
+			"ParamList": [
+				{
+					"Name": "ammoDamage",
+					"Value": "2"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "Explosive",
+			"Type": "!Ammo",
+			"ArgList": [ "!Ammo" ],
+			"ParamList": [
+				{
+					"Name": "ammoDamage",
+					"Value": "(+ (slotParam 1 ammoDamage) 1)"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(slotParam 1 manaConsumption)"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "(+ (slotParam 1 bulletConsumption) 1)"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(slotParam 1 fuelConsumption)"
+				}
+			]
+		},
+
+
+
+		{
+			"Constructor": "Saw",
+			"Type": "!Weapon",
+			"ArgList": [ "!Generator" ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(* 6 (slotParam 1 rotationalEnergy))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(slotParam 1 manaConsumption)"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(slotParam 1 fuelConsumption)"
+				}
+			]
+		},
+		{
+			"Constructor": "Shocker",
+			"Type": "!Weapon",
+			"ArgList": [ "!Generator" ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(* 5 (slotParam 1 electricEnergy))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(slotParam 1 manaConsumption)"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(slotParam 1 fuelConsumption)"
+				}
+			]
+		},
+		{
+			"Constructor": "Gun",
+			"Type": "!Weapon",
+			"ArgList": [ ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "2"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "Catapult",
+			"Type": "!Weapon",
+			"ArgList": [ "!Ammo" ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(slotParam 1 ammoDamage)"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(slotParam 1 manaConsumption)"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "(slotParam 1 bulletConsumption)"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(slotParam 1 fuelConsumption)"
+				}
+			]
+		},
+		{
+			"Constructor": "Shotgun",
+			"Type": "!Weapon",
+			"ArgList": [ "!Ammo" ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(* 2 (slotParam 1 ammoDamage))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(* 2 (slotParam 1 manaConsumption))"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "(* 2 (slotParam 1 bulletConsumption))"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(* 2 (slotParam 1 fuelConsumption))"
+				}
+			]
+		},
+		{
+			"Constructor": "Sword",
+			"Type": "!Weapon",
+			"ArgList": [  ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "3"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "1"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		},
+		{
+			"Constructor": "Minigun",
+			"Type": "!Weapon",
+			"ArgList": [ "!Generator", "!Ammo" ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(* (slotParam 1 rotationalEnergy) (slotParam 2 ammoDamage))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(+ (slotParam 1 manaConsumption) (* (slotParam 1 rotationalEnergy) (slotParam 2 manaConsumption)))"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "(* (slotParam 1 rotationalEnergy) (slotParam 2 bulletConsumption))"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(+ (slotParam 1 fuelConsumption) (* (slotParam 1 rotationalEnergy) (slotParam 2 fuelConsumption)))"
+				}
+			]
+		},
+		{
+			"Constructor": "Exohand",
+			"Type": "!Weapon",
+			"ArgList": [ "!Generator", "!Weapon", "!Weapon" ],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(if (>= (slotParam 1 electricEnergy) 1) (+ (slotParam 2 weaponDamage) (slotParam 3 weaponDamage)) 0)"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(if (>= (slotParam 1 electricEnergy) 1) (+ (slotParam 1 manaConsumption) (slotParam 2 manaConsumption) (slotParam 3 manaConsumption)) 0)"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "(if (>= (slotParam 1 electricEnergy) 1) (+ (slotParam 2 bulletConsumption) (slotParam 3 bulletConsumption)) 0)"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(if (>= (slotParam 1 electricEnergy) 1) (+ (slotParam 1 fuelConsumption) (slotParam 2 fuelConsumption) (slotParam 3 fuelConsumption)) 0)"
+				}
+			]
+		},
+		{
+			"Constructor": "Haussgun",
+			"Type": "!Weapon",
+			"ArgList": [ "!Generator", "!Ammo"],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(+ (* 4 (slotParam 1 electricEnergy)) (slotParam 2 ammoDamage))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "(+ (slotParam 1 manaConsumption) (slotParam 2 manaConsumption))"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "(slotParam 2 bulletConsumption)"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "(+ (slotParam 1 fuelConsumption) (slotParam 2 fuelConsumption))"
+				}
+			]
+		},
+		{
+			"Constructor": "Hammer",
+			"Type": "!Weapon",
+			"ArgList": [ "!Generator"],
+			"ParamList": [
+				{
+					"Name": "weaponDamage",
+					"Value": "(+ (param $Hp) (* 4 (+ (slotParam 1 electricEnergy) (slotParam 1 rotationalEnergy))))"
+				},
+				{
+					"Name": "manaConsumption",
+					"Value": "3"
+				},
+				{
+					"Name": "bulletConsumption",
+					"Value": "0"
+				},
+				{
+					"Name": "fuelConsumption",
+					"Value": "0"
+				}
+			]
+		}
+	]
+}

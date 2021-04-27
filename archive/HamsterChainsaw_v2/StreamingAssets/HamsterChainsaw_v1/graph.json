@@ -1,0 +1,482 @@
+{
+	"StartPoint": "*Start",
+	"StartTagList": [  ],
+	"StartParamList": 
+	[
+		{
+			"Param": "$Money",
+			"Value": 15
+		},
+		{
+			"Param": "$Hp",
+			"Value": 10
+		},
+		{
+			"Param": "$Chest",
+			"Value": 0
+		},
+		{
+			"Param": "$Mana",
+			"Value": 10
+		}
+	],
+	"LoseConditionList": [ "(<= (param $Hp) 0)" ],
+	"WinConditionList": [ "(tag $BossDefeated)" ],
+
+	"PointList": 
+	[
+		{
+			"Name": "*Start",
+			"EdgeType": 0,
+			"EdgeList": 
+			[
+				{
+					"Name": "~Rest",
+					"ToPoint": "*Start",
+					"ConditionList": [ "(>= (param $Money) 2)" ],
+					"ActionList": [
+						"(subParam $Money 2)",
+						"(setParam $Hp 10)",
+						"(removeParam $KillSeries)",
+						"(setParam $Mana 10)"
+					]
+				},
+				{
+					"Name": "~GoWork",
+					"ToPoint": "*Work"
+				},
+				{
+					"Name": "~GoShop",
+					"ToPoint": "*Shop"
+				},
+				{
+					"Name": "~GoDungeon123",
+					"ToPoint": "*Dungeon123"
+				},
+				{
+					"Name": "~GoDungeon456",
+					"ToPoint": "*Dungeon456"
+				},
+				{
+					"Name": "~GoDungeon789",
+					"ToPoint": "*Dungeon789"
+				},
+				{
+					"Name": "~GoBoss",
+					"ToPoint": "*BattleMyTurn",
+					"ActionList": [ "(setParam $MonsterHp 120)", "(setParam $MonsterAttack 3)", "(setParam $MonsterChest 10)", "(setTag $BossFight true)" ]
+				},
+				{
+					"Name": "~OpenChest",
+					"ToPoint": "*Chest",
+					"ConditionList": [ "(>= (param $Chest) 1)" ],
+					"ActionList": [ "(subParam $Chest 1)" ]
+				},
+				{
+					"Name": "~SellChest",
+					"ToPoint": "*Start",
+					"ConditionList": [ "(>= (param $Chest) 1)" ],
+					"ActionList": [ "(subParam $Chest 1)", "(addParam $Money 10)" ]
+				}
+			]
+		},
+		{
+			"Name": "*Chest",
+			"EdgeType": 1,
+			"EdgeList": 
+			[
+				{
+					"Name": "~FindMinigun",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Minigun 0)" ]
+				},
+				{
+					"Name": "~FindShotgun",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Shotgun 0)" ]
+				},
+				{
+					"Name": "~FindDinamo",
+					"ToPoint": "*Start",
+					"Weigth": 2,
+					"ActionList": [ "(addItem Dinamo 0)" ]
+				},
+				{
+					"Name": "~FindShocker",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Shocker 0)" ]
+				},
+				{
+					"Name": "~FindRuneTelekinesis",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem RuneTelekinesis 0)" ]
+				},
+				{
+					"Name": "~FindRuneElectroinesis",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem RuneElectroinesis 0)" ]
+				},
+				{
+					"Name": "~FindFire",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Fire 0)" ]
+				},
+				{
+					"Name": "~FindFireball",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Fireball 0)" ]
+				},
+				{
+					"Name": "~FindIceball",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Iceball 0)" ]
+				},
+				{
+					"Name": "~FindExplosive",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Explosive 0)" ]
+				},
+				{
+					"Name": "~FindSaw",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Saw 0)" ]
+				},
+				{
+					"Name": "~FindElectricEngine",
+					"ToPoint": "*Start",
+					"Weigth": 2,
+					"ActionList": [ "(addItem ElectricEngine 0)" ]
+				},
+				{
+					"Name": "~FindSolarBattery",
+					"ToPoint": "*Start",
+					"Weigth": 3,
+					"ActionList": [ "(addItem SolarBattery 0)" ]
+				},
+				{
+					"Name": "~FindStingray",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Stingray 0)" ]
+				},
+				{
+					"Name": "~FindHamster",
+					"ToPoint": "*Start",
+					"Weigth": 3,
+					"ActionList": [ "(addItem Hamster 0)" ]
+				},
+				{
+					"Name": "~FindElectricTransformator",
+					"ToPoint": "*Start",
+					"Weigth": 3,
+					"ActionList": [ "(addItem ElectricTransformator 0)" ]
+				},
+				{
+					"Name": "~FindGears",
+					"ToPoint": "*Start",
+					"Weigth": 3,
+					"ActionList": [ "(addItem Gears 0)" ]
+				},
+				{
+					"Name": "~FindFuelEngine",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem FuelEngine 0)" ]
+				},
+				{
+					"Name": "~FindExohand",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Exohand 0)" ]
+				},
+				{
+					"Name": "~FindHaussgun",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Haussgun 0)" ]
+				},
+				{
+					"Name": "~FindHammer",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(addItem Hammer 0)" ]
+				}
+			]
+		},
+		{
+			"Name": "*Work",
+			"EdgeType": 1,
+			"EdgeList": 
+			[
+				{
+					"Name": "~WorkOk",
+					"ToPoint": "*Start",
+					"Weigth": 9,
+					"ActionList": [ "(addParam $Money 1)", "(subParam $Hp 1)" ]
+				},
+				{
+					"Name": "~WorkBad",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ActionList": [ "(subParam $Hp 3)" ]
+				}
+			]
+		},
+		{
+			"Name": "*Shop",
+			"EdgeType": 0,
+			"EdgeList": 
+			[
+				{
+					"Name": "~BackShop",
+					"ToPoint": "*Start"
+				},
+				{
+					"Name": "~BuySword",
+					"ToPoint": "*Shop",
+					"ConditionList": [ "(>= (param $Money) 7)" ],
+					"ActionList": [ "(subParam $Money 7)", "(addItem Sword 0)" ]
+				},
+				{
+					"Name": "~BuyGun",
+					"ToPoint": "*Shop",
+					"ConditionList": [ "(>= (param $Money) 6)" ],
+					"ActionList": [ "(subParam $Money 6)", "(addItem Gun 0)" ]
+				},
+				{
+					"Name": "~BuyCatapult",
+					"ToPoint": "*Shop",
+					"ConditionList": [ "(>= (param $Money) 5)" ],
+					"ActionList": [ "(subParam $Money 5)", "(addItem Catapult 0)" ]
+				},
+				{
+					"Name": "~BuyBulletClip",
+					"ToPoint": "*Shop",
+					"ConditionList": [ "(>= (param $Money) 1)" ],
+					"ActionList": [ "(subParam $Money 1)", "(addItem BulletClip 0)" ]
+				},
+				{
+					"Name": "~BuyBullet",
+					"ToPoint": "*Shop",
+					"ConditionList": [ "(>= (param $Money) 3)" ],
+					"ActionList": [ "(subParam $Money 3)", "(addParam $Bullet 10)" ]
+				},
+				{
+					"Name": "~BuyFuel",
+					"ToPoint": "*Shop",
+					"ConditionList": [ "(>= (param $Money) 6)" ],
+					"ActionList": [ "(subParam $Money 6)", "(addParam $Fuel 10)" ]
+				}
+			]
+		},
+		{
+			"Name": "*Dungeon123",
+			"EdgeType": 1,
+			"EdgeList": 
+			[
+				{
+					"Name": "~Monster1",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 4,
+					"ActionList": [ "(setParam $MonsterHp 10)", "(setParam $MonsterAttack 1)", "(setParam $MonsterChest 1)" ]
+				},
+				{
+					"Name": "~Monster2",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 2,
+					"ActionList": [ "(setParam $MonsterHp 15)", "(setParam $MonsterAttack 2)", "(setParam $MonsterChest 1)" ]
+				},
+				{
+					"Name": "~Monster3",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ActionList": [ "(setParam $MonsterHp 20)", "(setParam $MonsterAttack 3)", "(setParam $MonsterChest 2)" ]
+				}
+			]
+		},
+		{
+			"Name": "*Dungeon456",
+			"EdgeType": 1,
+			"EdgeList": 
+			[
+				{
+					"Name": "~Monster4",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 4,
+					"ActionList": [ "(setParam $MonsterHp 30)", "(setParam $MonsterAttack 2)", "(setParam $MonsterChest 2)" ]
+				},
+				{
+					"Name": "~Monster5",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 2,
+					"ActionList": [ "(setParam $MonsterHp 35)", "(setParam $MonsterAttack 2)", "(setParam $MonsterChest 2)" ]
+				},
+				{
+					"Name": "~Monster6",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ActionList": [ "(setParam $MonsterHp 40)", "(setParam $MonsterAttack 3)", "(setParam $MonsterChest 3)" ]
+				}
+			]
+		},
+		{
+			"Name": "*Dungeon789",
+			"EdgeType": 1,
+			"EdgeList": 
+			[
+				{
+					"Name": "~Monster7",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 4,
+					"ActionList": [ "(setParam $MonsterHp 60)", "(setParam $MonsterAttack 3)", "(setParam $MonsterChest 3)" ]
+				},
+				{
+					"Name": "~Monster8",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 2,
+					"ActionList": [ "(setParam $MonsterHp 65)", "(setParam $MonsterAttack 3)", "(setParam $MonsterChest 3)" ]
+				},
+				{
+					"Name": "~Monster9",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ActionList": [ "(setParam $MonsterHp 70)", "(setParam $MonsterAttack 4)", "(setParam $MonsterChest 4)" ]
+				}
+			]
+		},
+		{
+			"Name": "*BattleMyTurn",
+			"EdgeType": 0,
+			"EdgeList": 
+			[
+				{
+					"Name": "~HitByHand",
+					"ToPoint": "*BattleEnemyTurn",
+					"Weigth": 1,
+					"ActionList": [ "(subParam $MonsterHp (+ 1 (min 3 (param $KillSeries))))" ]
+				},
+				{
+					"Name": "~HitByWeapon",
+					"ToPoint": "*BattleEnemyTurn",
+					"Weigth": 1,
+					"ConditionList": 
+					[
+						"(>= (param $Bullet) (slot #CurWeapon bulletConsumption 0))",
+						"(>= (param $Fuel) (slot #CurWeapon fuelConsumption 0))",
+						"(>= (param $Mana) (slot #CurWeapon manaConsumption 0))",
+						"(> (slot #CurWeapon weaponDamage 0) 0)"
+					],
+					"ActionList": 
+					[
+						"(subParam $MonsterHp (+ (slot #CurWeapon weaponDamage 0) (min 3 (param $KillSeries))))",
+						"(subParam $Bullet (slot #CurWeapon bulletConsumption 0))",
+						"(subParam $Fuel (slot #CurWeapon fuelConsumption 0))",
+						"(subParam $Mana (slot #CurWeapon manaConsumption 0))"
+					]
+				},
+				{
+					"Name": "~Heal",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ConditionList": [ "(>= (param $Mana) 3)" ],
+					"ActionList": [ "(subParam $Mana 3)", "(addParam $Hp +5)" ]
+				},
+				{
+					"Name": "~EscapeByMoney",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ConditionList": [ "(>= (param $Money) 5)" ],
+					"ActionList": 
+					[
+						"(subParam $Money 5)",
+						"(removeParam $MonsterHp)",
+						"(removeParam $MonsterAttack)",
+						"(removeParam $MonsterChest)",
+						"(removeParam $KillSeries)",
+						"(setTag $BossFight false)"
+					]
+				}
+			]
+		},
+		{
+			"Name": "*BattleEnemyTurn",
+			"EdgeType": 1,
+			"EdgeList": 
+			[
+				{
+					"Name": "~MonsterHit",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 5,
+					"ConditionList": [ "(> (param $MonsterHp) 0)" ],
+					"ActionList": [ "(subParam $Hp (param $MonsterAttack))" ]
+				},
+				{
+					"Name": "~MonsterSuperHit",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ConditionList": [ "(> (param $MonsterHp) 0)" ],
+					"ActionList": [ "(subParam $Hp (* 2 (param $MonsterAttack)))" ]
+				},
+				{
+					"Name": "~MonsterDuplicator",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ConditionList": [ "(> (param $MonsterHp) 0)", "(> (param $MonsterAttack) 1)" ],
+					"ActionList": [ "(addParam $MonsterHp (param $MonsterHp))", "(subParam $MonsterAttack 1)" ]
+				},
+				{
+					"Name": "~MonsterAngry",
+					"ToPoint": "*BattleMyTurn",
+					"Weigth": 1,
+					"ConditionList": [ "(> (param $MonsterHp) 15)" ],
+					"ActionList": [ "(subParam $MonsterHp 10)", "(addParam $MonsterAttack 1)" ]
+				},
+				{
+					"Name": "~MonsterDie",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ConditionList": [ "(<= (param $MonsterHp) 0)", "(not (tag $BossFight))" ],
+					"ActionList": [
+						"(addParam $Chest (param $MonsterChest))",
+						"(addParam $KillSeries 1)",
+						"(removeParam $MonsterHp)",
+						"(removeParam $MonsterAttack)",
+						"(removeParam $MonsterChest)"
+					]
+				},
+				{
+					"Name": "~BossDie",
+					"ToPoint": "*Start",
+					"Weigth": 1,
+					"ConditionList": [ "(<= (param $MonsterHp) 0)", "(tag $BossFight)" ],
+					"ActionList": [
+						"(addParam $Chest (param $MonsterChest))",
+						"(addParam $KillSeries 1)",
+						"(removeParam $MonsterHp)",
+						"(removeParam $MonsterAttack)",
+						"(removeParam $MonsterChest)",
+						"(setTag $BossFight false)",
+						"(setTag $BossDefeated true)"
+					]
+				}
+			]
+		}
+	],
+	"SlotList": 
+	[
+		{
+			"Slot": "#CurWeapon",
+			"Type": "!Weapon"
+		}
+	]
+}

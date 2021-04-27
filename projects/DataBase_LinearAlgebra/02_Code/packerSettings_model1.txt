@@ -1,0 +1,13 @@
+[
+	"01_Code/Context2d.ts",
+	"01_Code/Context3d.ts",
+	"01_Code/Vector2.ts",
+	"01_Code/Vector3.ts",
+	"01_Code/Matrix3.ts",
+	"01_Code/Canvas.ts",
+	"01_Code/XObject.ts",
+	"01_Code/ContainerCanvas.ts",
+	"01_Code/SceneXObject.ts",
+	"01_Code/Primitive.ts",
+	"01_Code/VectorXObject.ts"
+]

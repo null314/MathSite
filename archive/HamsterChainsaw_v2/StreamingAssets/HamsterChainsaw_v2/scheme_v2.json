@@ -1,0 +1,153 @@
+{
+	"ConstantList": 
+	[
+		{
+			"Name": "#Skill.Elemental.bonus",
+			"Value": 2
+		},
+		{
+			"Name": "#LightTurbine.consumption",
+			"Value": 2
+		},
+		{
+			"Name": "#Explosive.ammoDamage.bonus",
+			"Value": 1
+		},
+		{
+			"Name": "#Explosive.bulletConsumption.bonus",
+			"Value": 1
+		},
+		{
+			"Name": "#Flammable.ammoDamage.bonus",
+			"Value": 2
+		},
+		{
+			"Name": "#Flammable.fuelConsumption.bonus",
+			"Value": 1
+		},
+		{
+			"Name": "#Saw.weaponDamage.factor",
+			"Value": 5
+		},
+		{
+			"Name": "#BattleLens.weaponDamage.factor",
+			"Value": 5
+		},
+		{
+			"Name": "#Shocker.weaponDamage.factor",
+			"Value": 6
+		},
+		{
+			"Name": "#Haussgun.weaponDamage.factor",
+			"Value": 4
+		},
+		{
+			"Name": "#SniperRifle.weaponDamage.factor",
+			"Value": 3
+		},
+		{
+			"Name": "#Stroboscope.weaponDamage.factor",
+			"Value": 7
+		},
+		{
+			"Name": "#JediSword.weaponDamage.factor",
+			"Value": 4
+		},
+
+
+		{
+			"Name": "#Sword.price",
+			"Value": 5
+		},
+		{
+			"Name": "#FlameSword.price",
+			"Value": 17
+		},
+		{
+			"Name": "#MagicSword.price",
+			"Value": 25
+		},
+		{
+			"Name": "#Gun.price",
+			"Value": 7
+		},
+		{
+			"Name": "#BulletClip.price",
+			"Value": 3
+		},
+		{
+			"Name": "#FractionClip.price",
+			"Value": 10
+		},
+		{
+			"Name": "#Bullet.price",
+			"Value": 3
+		},
+		{
+			"Name": "#Fuel.price",
+			"Value": 6
+		},
+		{
+			"Name": "#RuneTelekinesis.price",
+			"Value": 22
+		},
+		{
+			"Name": "#RuneElectrokinesis.price",
+			"Value": 25
+		},
+		{
+			"Name": "#RunePirokinesis.price",
+			"Value": 20
+		},
+		{
+			"Name": "#Mirror.price",
+			"Value": 25
+		},
+		{
+			"Name": "#Gears.price",
+			"Value": 22
+		},
+		{
+			"Name": "#ElectricTransformator.price",
+			"Value": 20
+		},
+		{
+			"Name": "#ElectricEngine.price",
+			"Value": 14
+		},
+		{
+			"Name": "#Dinamo.price",
+			"Value": 17
+		},
+		{
+			"Name": "#Spotlight.price",
+			"Value": 11
+		},
+		{
+			"Name": "#PhotoElement.price",
+			"Value": 10
+		},
+		{
+			"Name": "#LightTurbine.price",
+			"Value": 5
+		},
+
+
+
+
+
+
+		{
+			"Name": "#Skill.Strength.bonus",
+			"Value": 2
+		},
+		{
+			"Name": "#Skill.Sword.bonus",
+			"Value": 5
+		},
+		{
+			"Name": "#LevelUp.Factor",
+			"Value": 5
+		}
+	]
+}
