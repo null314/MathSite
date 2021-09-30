@@ -1,18 +1,17 @@
+*.exe
+
 .vs
-bin
 obj
 Library
-00_TsCompiler
-packer.exe
-ObsidianConverter.exe
+bin 
 
-/projects/Knowledge/Unity/Knowledge/.vs
-/projects/Knowledge/Unity/Knowledge/obj
-/projects/Knowledge/Unity/Knowledge/Assembly-CSharp.csproj
 /projects/Knowledge/Unity/Knowledge/Knowledge.sln
 
-/projects/DataBase_Quantum/Unity/Quantum/.vs
-/projects/DataBase_Quantum/Unity/Quantum/Library
-/projects/DataBase_Quantum/Unity/Quantum/obj
 /projects/DataBase_Quantum/Unity/Quantum/Assembly-CSharp.csproj
 /projects/DataBase_Quantum/Unity/Quantum/Quantum.sln
+
+
+/projects/DataBase_ComplexNumber/00_TsCompiler
+/projects/DataBase_LinearAlgebra/00_TsCompiler
+/projects/DataBase_Physics/00_TsCompiler
+/projects/Knowledge/Unity/Knowledge
