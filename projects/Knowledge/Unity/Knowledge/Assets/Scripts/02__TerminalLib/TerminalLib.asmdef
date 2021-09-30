@@ -1,0 +1,11 @@
+{
+    "name": "TerminalLib",
+    "references": [
+        "InterfacesLib",
+        "ProgLib"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

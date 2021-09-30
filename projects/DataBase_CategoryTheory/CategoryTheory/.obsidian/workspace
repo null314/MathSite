@@ -6,11 +6,10 @@
       {
         "id": "2768ed112a2873a1",
         "type": "leaf",
-        "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Теории (черновики)/Логика знаний.md",
+            "file": "Отношения на множестве аксиоматик.md",
             "mode": "source"
           }
         }
@@ -69,10 +68,12 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Теории (черновики)/Логика знаний.md",
+                "file": "Отношения на множестве аксиоматик.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -85,12 +86,13 @@
     "width": 300,
     "collapsed": true
   },
+  "active": "2768ed112a2873a1",
   "lastOpenFiles": [
+    "Untitled.md",
     "Теории (черновики)/Логика знаний.md",
     "Теории (черновики)/Untitled.md",
     "Логика доступа/Untitled.md",
     "Теории (черновики)/Возведение в степень, как модуль.md",
-    "Функторы.md",
-    "Untitled.md"
+    "Функторы.md"
   ]
 }

@@ -6,12 +6,10 @@
       {
         "id": "2b41f24bf492344e",
         "type": "leaf",
-        "active": true,
         "state": {
-          "type": "markdown",
+          "type": "image",
           "state": {
-            "file": "SmartContracts/Isabelle.md",
-            "mode": "source"
+            "file": "Trash/IMG_20210819_0006.jpg"
           }
         }
       }
@@ -69,10 +67,12 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SmartContracts/Isabelle.md",
+                "file": "Trash/IMG_20210819_0006.jpg",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -85,7 +85,10 @@
     "width": 300,
     "collapsed": true
   },
+  "active": "2b41f24bf492344e",
   "lastOpenFiles": [
+    "Trash/IMG_20210819_0006.jpg",
+    "SmartContracts/Isabelle.md",
     "SmartContracts/Untitled.md",
     "SmartContracts/Scilla.md",
     "SmartContracts/Zilliqa.md",

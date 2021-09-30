@@ -1,0 +1,10 @@
+{
+    "name": "ProgLib",
+    "references": [
+        "InterfacesLib"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
